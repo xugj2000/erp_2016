@@ -1,0 +1,281 @@
+BODY {
+	WIDTH: 100%; FONT-FAMILY: Arial, Helvetica, sans-serif; HEIGHT: 100%; FONT-SIZE: 12px
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+PRE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	padding: 0px;
+	MARGIN: 0px; 	height: 99px;
+	width: 447px;
+}
+BLOCKQUOTE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE {
+	FONT-SIZE: 12px;
+}
+TD {
+	FONT-SIZE: 12px
+}
+TR {
+	FONT-SIZE: 12px
+}
+TH {
+	FONT-SIZE: 12px
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+IMG {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+OL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+UL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+CAPTION {
+	TEXT-ALIGN: left
+}
+TH {
+	TEXT-ALIGN: left
+}
+Q:before {
+	CONTENT: ''
+}
+Q:after {
+	CONTENT: ''
+}
+ABBR {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+ACRONYM {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+ADDRESS {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+CAPTION {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+CITE {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+CODE {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+DFN {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+EM {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+TH {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+VAR {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+A {
+	COLOR: #a0a0a0; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #333333; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #333333; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #ff3300
+}
+.cWhite {
+	COLOR: #fff
+}
+.cWhite:visited {
+	COLOR: #fff
+}
+.cWhite:link {
+	COLOR: #fff
+}
+.cOrange {
+	COLOR: #ef8718
+}
+.cOrange:visited {
+	COLOR: #ef8718
+}
+.cOrange:link {
+	COLOR: #ef8718
+}
+.cDOrange {
+	COLOR: #fd7600
+}
+.DcOrange:visited {
+	COLOR: #fd7600
+}
+.cDOrange:link {
+	COLOR: #fd7600
+}
+.cGray {
+	COLOR: #616161
+}
+.cGray:visited {
+	COLOR: #616161
+}
+.cGray:link {
+	COLOR: #616161
+}
+.cDGray {
+	COLOR: #222
+}
+.cDGray:visited {
+	COLOR: #222
+}
+.cDGray:link {
+	COLOR: #222
+}
+.cBlack {
+	COLOR: #000
+}
+.cBlack:visited {
+	COLOR: #000
+}
+.cBlack:link {
+	COLOR: #000
+}
+.cRed {
+	COLOR: #e80001
+}
+.cRed:visited {
+	COLOR: #e80001
+}
+.cRed:link {
+	COLOR: #e80001
+}
+.cDRed {
+	COLOR: #bf0908
+}
+.cDRed:link {
+	COLOR: #bf0908
+}
+.cDRed:visited {
+	COLOR: #bf0908
+}
+.fB {
+	FONT-WEIGHT: bold
+}
+.fI {
+	FONT-STYLE: italic
+}
+.f12px {
+	FONT-SIZE: 12px
+}
+.f14px {
+	FONT-SIZE: 14px
+}
+.left {
+	FLOAT: left
+}
+.right {
+	FLOAT: right
+}
+.hidden {
+	DISPLAY: none
+}
+.unLine {
+	TEXT-DECORATION: none
+}
+.unLine A {
+	TEXT-DECORATION: none
+}
+.noBorder {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+.clear {
+	DISPLAY: block; HEIGHT: 0px; CLEAR: both; OVERFLOW: hidden
+}
+.clearfix:after {
+	DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; OVERFLOW: hidden; CONTENT: "."
+}
+.blankW {
+	BACKGROUND: #fff
+}
+.blank3 {
+	DISPLAY: block; HEIGHT: 3px; CLEAR: both; FONT-SIZE: 1px; OVERFLOW: hidden
+}
+.blank6 {
+	DISPLAY: block; HEIGHT: 6px; CLEAR: both; FONT-SIZE: 1px; OVERFLOW: hidden
+}
+.blank9 {
+	DISPLAY: block; HEIGHT: 9px; CLEAR: both; FONT-SIZE: 1px; OVERFLOW: hidden
+}
+.blank9w {
+	DISPLAY: block; BACKGROUND: #ffffff; HEIGHT: 9px; CLEAR: both; FONT-SIZE: 1px; OVERFLOW: hidden
+}
+.blank12 {
+	DISPLAY: block; HEIGHT: 12px; CLEAR: both; OVERFLOW: hidden
+}
+.blank15 {
+	DISPLAY: block; HEIGHT: 15px; CLEAR: both; OVERFLOW: hidden
+}
+.blank20 {
+	DISPLAY: block; HEIGHT: 20px; CLEAR: both; OVERFLOW: hidden
+}
+.auto_main {
+	CLEAR: both
+}

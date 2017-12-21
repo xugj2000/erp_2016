@@ -1,0 +1,19 @@
+2017-09-22 09:22:51  发送消息到服务失败:请求因 HTTP 状态 404 失败: Not Found。
+Url:http://127.0.0.1:8001/Handler/getInfoByCode.ashx?d=1506043370413&q=101010&wid=1
+UrlReferrer:http://127.0.0.1:8001/Storage/addproductin.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+2017-09-22 09:23:32  发送消息到服务失败:请求因 HTTP 状态 404 失败: Not Found。
+Url:http://127.0.0.1:8001/Handler/getInfoByCode.ashx?d=1506043412177&q=101010&wid=1
+UrlReferrer:http://127.0.0.1:8001/Storage/addproductin.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+2017-09-22 09:24:18  发送消息到服务失败:请求因 HTTP 状态 404 失败: Not Found。
+Url:http://127.0.0.1:8001/Handler/getInfoByCode.ashx?q=101010
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+2017-09-22 09:25:27  发送消息到服务失败:操作超时
+Url:http://127.0.0.1:8001/Handler/getInfoByCode.ashx?d=1506043427295&q=101010&wid=1
+UrlReferrer:http://127.0.0.1:8001/Storage/addproductin.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)

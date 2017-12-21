@@ -1,0 +1,14 @@
+
+body {
+    margin: 0em 3em 0em 3em;
+    padding: 0;
+    border: 0;
+    color: black;
+    background: white;
+    font: normal 10pt "Bakersville Old Face", "Times New Roman", Times, serif;
+    text-align: left;
+}
+.Noprint{display:none;}  
+td{
+border:1px solid #CCCCCC;} 
+.only_print_view {display:block;}

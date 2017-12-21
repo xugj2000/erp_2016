@@ -1,0 +1,8 @@
+F:\mywork\other\Warehousing\Model\bin\Debug\Warehousing.Model.dll
+F:\mywork\other\Warehousing\Model\bin\Debug\Warehousing.Model.pdb
+F:\mywork\other\Warehousing\Model\obj\Debug\Warehousing.Model.dll
+F:\mywork\other\Warehousing\Model\obj\Debug\Warehousing.Model.pdb
+F:\mywork\ERP_2016\Model\bin\Debug\Warehousing.Model.dll
+F:\mywork\ERP_2016\Model\bin\Debug\Warehousing.Model.pdb
+F:\mywork\ERP_2016\Model\obj\Debug\Warehousing.Model.dll
+F:\mywork\ERP_2016\Model\obj\Debug\Warehousing.Model.pdb

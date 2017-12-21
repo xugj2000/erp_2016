@@ -1,0 +1,60 @@
+2017-10-18 11:19:37  从数据类型 nvarchar 转换为 numeric 时出错。
+类型:Text 语句:insert into [Tb_plan_main] ([sm_supplierid],[sm_type],[warehouse_id],[sm_tax],[sm_date],[sm_operator],[sm_remark],[sm_sn],[sm_adminid])values(@sm_supplierid,@sm_type,@warehouse_id,@sm_tax,@sm_date,@sm_operator,@sm_remark,@sm_sn,@sm_adminid) 参数:
+[Input] sm_supplierid:
+[Input] sm_type:
+[Input] warehouse_id:4
+[Input] sm_tax:
+[Input] sm_date:
+[Input] sm_operator:
+[Input] sm_remark:
+[Input] sm_sn:CG00000007
+[Input] sm_adminid:1
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
+2017-10-18 11:47:35  从数据类型 nvarchar 转换为 numeric 时出错。
+类型:Text 语句:insert into [Tb_plan_main] ([sm_supplierid],[sm_type],[warehouse_id],[sm_tax],[sm_date],[sm_operator],[sm_remark],[sm_sn],[sm_adminid])values(@sm_supplierid,@sm_type,@warehouse_id,@sm_tax,@sm_date,@sm_operator,@sm_remark,@sm_sn,@sm_adminid) 参数:
+[Input] sm_supplierid:
+[Input] sm_type:
+[Input] warehouse_id:4
+[Input] sm_tax:
+[Input] sm_date:
+[Input] sm_operator:
+[Input] sm_remark:
+[Input] sm_sn:CG00000008
+[Input] sm_adminid:1
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
+2017-10-18 11:49:41  从数据类型 nvarchar 转换为 numeric 时出错。
+类型:Text 语句:insert into [Tb_plan_main] ([sm_supplierid],[sm_type],[warehouse_id],[sm_tax],[sm_date],[sm_operator],[sm_remark],[sm_sn],[sm_adminid])values(@sm_supplierid,@sm_type,@warehouse_id,@sm_tax,@sm_date,@sm_operator,@sm_remark,@sm_sn,@sm_adminid) 参数:
+[Input] sm_supplierid:
+[Input] sm_type:
+[Input] warehouse_id:4
+[Input] sm_tax:
+[Input] sm_date:
+[Input] sm_operator:
+[Input] sm_remark:
+[Input] sm_sn:CG00000009
+[Input] sm_adminid:1
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
+2017-10-18 11:49:44  从数据类型 nvarchar 转换为 numeric 时出错。
+类型:Text 语句:insert into [Tb_plan_main] ([sm_supplierid],[sm_type],[warehouse_id],[sm_tax],[sm_date],[sm_operator],[sm_remark],[sm_sn],[sm_adminid])values(@sm_supplierid,@sm_type,@warehouse_id,@sm_tax,@sm_date,@sm_operator,@sm_remark,@sm_sn,@sm_adminid) 参数:
+[Input] sm_supplierid:
+[Input] sm_type:
+[Input] warehouse_id:4
+[Input] sm_tax:
+[Input] sm_date:
+[Input] sm_operator:
+[Input] sm_remark:
+[Input] sm_sn:CG00000010
+[Input] sm_adminid:1
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36

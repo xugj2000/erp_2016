@@ -1,0 +1,44 @@
+2017-09-20 17:37:03  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+2017-09-20 17:37:03  未将对象引用设置到对象的实例。
+Url:http://127.0.0.1:8001/Storage/Upload.ashx
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+2017-09-20 17:37:05  test
+Url:http://127.0.0.1:8001/storage/Upload.ashx
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+2017-09-20 17:37:05  未将对象引用设置到对象的实例。
+Url:http://127.0.0.1:8001/storage/Upload.ashx
+HostIP:127.0.0.1
+Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)
+2017-09-20 17:37:17  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx?userid=&rnd=Wed, 20 Sep 2017 09:37:12 UTC
+HostIP:127.0.0.1
+Shockwave Flash
+2017-09-20 17:41:22  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx?userid=&rnd=Wed, 20 Sep 2017 09:41:18 UTC
+HostIP:127.0.0.1
+Shockwave Flash
+2017-09-20 17:42:17  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx?userid=&rnd=Wed, 20 Sep 2017 09:42:13 UTC
+HostIP:127.0.0.1
+Shockwave Flash
+2017-09-20 17:42:53  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx?userid=&rnd=Wed, 20 Sep 2017 09:42:49 UTC
+HostIP:127.0.0.1
+Shockwave Flash
+2017-09-20 17:43:30  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx?userid=&rnd=Wed, 20 Sep 2017 09:43:27 UTC
+HostIP:127.0.0.1
+Shockwave Flash
+2017-09-20 20:08:04  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx?userid=&rnd=Wed, 20 Sep 2017 12:07:59 UTC
+HostIP:127.0.0.1
+Shockwave Flash
+2017-09-20 20:09:46  test
+Url:http://127.0.0.1:8001/Storage/Upload.ashx?userid=&rnd=Wed, 20 Sep 2017 12:09:39 UTC
+HostIP:127.0.0.1
+Shockwave Flash

@@ -1,0 +1,20 @@
+2017-10-18 11:19:37  发送消息到服务失败:请求因 HTTP 状态 404 失败: Not Found。
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
+2017-10-18 11:47:35  发送消息到服务失败:请求因 HTTP 状态 404 失败: Not Found。
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
+2017-10-18 11:49:41  发送消息到服务失败:请求因 HTTP 状态 404 失败: Not Found。
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36
+2017-10-18 11:49:44  发送消息到服务失败:请求因 HTTP 状态 404 失败: Not Found。
+Url:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+UrlReferrer:http://127.0.0.1:8001/Storage/addProductPlan.aspx
+HostIP:127.0.0.1
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36

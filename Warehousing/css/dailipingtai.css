@@ -1,0 +1,283 @@
+.ui-tabs-hide {
+	DISPLAY: none
+}
+.ui-tscure {
+	LINE-HEIGHT: 28px; DISPLAY: block; BACKGROUND: url(../images/left_avsdbg.jpg); HEIGHT: 28px; COLOR: #fff
+}
+.ui-tscure A:hover {
+	TEXT-DECORATION: underline
+}
+.red {
+	COLOR: #f00; TEXT-DECORATION: underline
+}
+.red1 {
+	COLOR: #bd000e
+}
+.red2 {
+	COLOR: #f00; TEXT-DECORATION: none
+}
+A {
+	COLOR: #333
+}
+.fl {
+	FLOAT: left
+}
+.weizhi {
+	LINE-HEIGHT: 25px; MARGIN-TOP: 2px; PADDING-LEFT: 15px; BACKGROUND: url(../images/right_titlebg.jpg); FONT-WEIGHT: normal; PADDING-TOP: 2px
+}
+.c000 {
+	COLOR: #000000
+}
+.ml5px {
+	MARGIN-LEFT: 5px
+}
+.mt5px {
+	MARGIN-TOP: 5px
+}
+.weizhi SPAN {
+	PADDING-LEFT: 15px; BACKGROUND: url(../images/biao.jpg) no-repeat left center
+}
+.weizhi A {
+	MARGIN: 0px 5px; TEXT-DECORATION: none
+}
+.weizhi A:hover {
+	COLOR: #333; TEXT-DECORATION: none
+}
+.l_bg02 {
+	TEXT-ALIGN: center; LINE-HEIGHT: 28px; MARGIN-TOP: 2px; BACKGROUND: url(../images/left_a.jpg); HEIGHT: 28px; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.l_bg02_A UL LI {
+	BORDER-BOTTOM: #f3f3f3 1px solid; TEXT-ALIGN: left; LINE-HEIGHT: 28px; MARGIN-TOP: 1px; PADDING-LEFT: 15px; BACKGROUND: url(../images/main_left_libg.jpg) #fffcf6 no-repeat 5px 10px; HEIGHT: 28px; FONT-SIZE: 12px
+}
+.l_bg02_A UL LI:hover {
+	BACKGROUND: url(../images/main_left_libg.jpg) #f8f8f8 no-repeat 7px 10px
+}
+
+a.current{
+	color: #FFFFFF;
+	background-color: #003399;
+}
+
+a.current a:active{
+	color: #FFFFFF;
+	background-color: #003399;
+}
+
+
+
+.top {
+	TEXT-ALIGN: center; MARGIN: 0px auto; WIDTH: 1200px; BACKGROUND: url(../images/top_bg.jpg); HEIGHT: 105px; OVERFLOW: hidden
+}
+.top_left {
+	WIDTH: 350px; FLOAT: left
+}
+.top_right {
+	WIDTH: 650px; FLOAT: right
+}
+.nav {
+	TEXT-ALIGN: center; LINE-HEIGHT: 33px; MARGIN: 0px auto; WIDTH: 1200px; BACKGROUND: url(../images/navbg.jpg); HEIGHT: 33px; COLOR: #fff; FONT-SIZE: 12px
+}
+.nav .left_nav {
+	LINE-HEIGHT: 33px; PADDING-LEFT: 5px; WIDTH: 670px; FLOAT: left; HEIGHT: 33px
+}
+.nav .left_nav SPAN {
+	COLOR: #ff0; MARGIN-RIGHT: 10px
+}
+.nav .right_nav {
+	TEXT-ALIGN: right; LINE-HEIGHT: 33px; WIDTH: 290px; FLOAT: right; HEIGHT: 33px; MARGIN-RIGHT: 20px
+}
+.nav .right_nav INPUT {
+	BORDER-BOTTOM: #a10000 1px solid; BORDER-LEFT: #a10000 1px solid; LINE-HEIGHT: 19px; MARGIN-TOP: 5px; PADDING-LEFT: 5px; WIDTH: 200px; BACKGROUND: #fff; FLOAT: left; HEIGHT: 19px; FONT-SIZE: 12px; BORDER-TOP: #a10000 1px solid; BORDER-RIGHT: #a10000 1px solid
+}
+.nav .right_nav A {
+	MARGIN-TOP: 3px; WIDTH: 60px; DISPLAY: block; FLOAT: right
+}
+.main {
+	MARGIN: 0px auto; WIDTH: 1200px
+}
+.main .left {
+	WIDTH: 150px; OVERFLOW: hidden; PADDING-TOP: 2px
+}
+.main .div_btn {
+	MARGIN: 0px; WIDTH: 14px; BACKGROUND: url(../images/bt_bg.jpg) #e6e6e6 left 50%; FLOAT: left; HEIGHT: 788px; OVERFLOW: hidden; CURSOR: pointer
+}
+.main .div_btn .close {
+	MARGIN: 250px 0px 0px; WIDTH: 16px; DISPLAY: block; BACKGROUND: url(../images/buttonleft.jpg) no-repeat; FLOAT: left; HEIGHT: 43px; OVERFLOW: hidden
+}
+.main .div_btn .open {
+	MARGIN: 250px 0px 0px; WIDTH: 16px; DISPLAY: block; BACKGROUND: url(../images/buttonright.jpg) no-repeat; FLOAT: left; HEIGHT: 43px; OVERFLOW: hidden
+}
+.main .div_btn2 {
+	BACKGROUND-COLOR: #f5f5f5; MARGIN: 0px 1px; WIDTH: 14px; FLOAT: left; HEIGHT: 1250px; OVERFLOW: hidden; CURSOR: pointer
+}
+.main .div_btn2 .close {
+	MARGIN: 250px 0px 0px; WIDTH: 16px; DISPLAY: block; BACKGROUND: url(../images/buttonleft.jpg) no-repeat; FLOAT: left; HEIGHT: 43px; OVERFLOW: hidden
+}
+.main .div_btn2 .open {
+	MARGIN: 250px 0px 0px; WIDTH: 16px; DISPLAY: block; BACKGROUND: url(../images/buttonright.jpg) no-repeat; FLOAT: left; HEIGHT: 43px; OVERFLOW: hidden
+}
+.main .right {
+	WIDTH: 1000px; FLOAT: left; _width: 1000px;margin-left:10px;
+}
+.main .right .title_fb {
+	COLOR: #c00; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.under UL LI {
+	LINE-HEIGHT: 28px; PADDING-LEFT: 5px; FONT-SIZE: 14px; OVERFLOW: hidden
+}
+.under UL LI A {
+	PADDING-LEFT: 15px; BACKGROUND: url(../images/biao.jpg) no-repeat left 50%; FLOAT: left; COLOR: #292929; OVERFLOW: hidden; TEXT-DECORATION: none
+}
+.under UL LI A:hover {
+	COLOR: #333; TEXT-DECORATION: underline
+}
+.under UL LI SPAN {
+	FLOAT: right; COLOR: #6f6f6f; FONT-SIZE: 12px
+}
+.page {
+	LINE-HEIGHT: 28px; BACKGROUND-COLOR: #f8f8f8; MARGIN-TOP: 10px; HEIGHT: 28px; COLOR: #666; FONT-SIZE: 12px
+}
+.tiexin {
+	MARGIN-TOP: 5px; WIDTH: 335px; BACKGROUND: url(../images/tiexin_bg.jpg); HEIGHT: 224px; OVERFLOW: hidden; PADDING-TOP: 35px
+}
+.tiexin .text_class {
+	LINE-HEIGHT: 24px; MARGIN: 0px 25px; COLOR: #161616; FONT-SIZE: 12px
+}
+.tiexin .text_class SPAN {
+	COLOR: #c00
+}
+.shipin {
+	MARGIN-TOP: 5px; OVERFLOW: hidden
+}
+.footer {
+	TEXT-ALIGN: center; WIDTH: 100%; BACKGROUND: url(../images/foot_bg.jpg) repeat-x; HEIGHT: 50px; PADDING-TOP: 15px
+}
+.footer SPAN {
+	MARGIN-RIGHT: 10px
+}
+.fanye {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px; BACKGROUND-COLOR: #f7f7f7; MARGIN: 10px 20px 0px 0px; WIDTH: 98%; FONT-SIZE: 12px
+}
+.fanye2 {
+	TEXT-ALIGN: center; LINE-HEIGHT: 30px; BACKGROUND-COLOR: #f8f8f8; FONT-SIZE: 12px
+}
+.bfgc_black {
+	LINE-HEIGHT: 32px
+}
+.bfgc_black TABLE {
+	TEXT-ALIGN: left; MARGIN-TOP: 20px; WIDTH: 800px; MARGIN-LEFT: 20px
+}
+.bfgc_black TABLE A {
+	MARGIN-TOP: 3px; WIDTH: 83px; DISPLAY: block; MARGIN-LEFT: 5px
+}
+.bfgc_black TABLE INPUT {
+	BORDER-BOTTOM: #999 1px solid; BORDER-LEFT: #999 1px solid; LINE-HEIGHT: 20px; WIDTH: 125px; HEIGHT: 20px; BORDER-TOP: #999 1px solid; BORDER-RIGHT: #999 1px solid
+}
+.bfgc_black TABLE TD {
+	PADDING-LEFT: 8px; FONT-SIZE: 14px
+}
+.cplb_black {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 0px
+}
+.cplb_black TABLE {
+	WIDTH: 100%
+}
+.cplb_black TABLE TD {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 15px
+}
+.cplb_black TABLE A {
+	MARGIN-LEFT: 15px
+}
+.cplb_bt {
+	TEXT-ALIGN: right; LINE-HEIGHT: 32px; BACKGROUND: url(../images/left_a4vsdbg.jpg) repeat-x; HEIGHT: 35px; PADDING-TOP: 3px
+}
+.cplb_bt A {
+	MARGIN-RIGHT: 15px
+}
+.btn {
+	WIDTH: 210px; BACKGROUND: url(../images/gg_btn.jpg); HEIGHT: 615px
+}
+.btn_ss {
+	WIDTH: 75px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -8px; HEIGHT: 25px
+}
+.btn_go {
+	WIDTH: 40px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) -80px -8px; HEIGHT: 25px
+}
+.btn_sosuo {
+	WIDTH: 85px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -35px; HEIGHT: 28px
+}
+.btn_up {
+	WIDTH: 68px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -66px; HEIGHT: 27px
+}
+.btn_under {
+	WIDTH: 68px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) -70px -66px; HEIGHT: 27px
+}
+.btn_qx {
+	WIDTH: 68px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) -140px -66px; HEIGHT: 27px
+}
+.btn_qddlqd {
+	WIDTH: 123px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -96px; HEIGHT: 27px
+}
+.btn_lc01 {
+	WIDTH: 123px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -128px; HEIGHT: 36px
+}
+.btn_lc02 {
+	WIDTH: 123px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -170px; HEIGHT: 36px
+}
+.btn_ksxz {
+	WIDTH: 128px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -210px; HEIGHT: 42px
+}
+.btn_ckgw {
+	WIDTH: 128px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -257px; HEIGHT: 42px
+}
+.btn_jj01 {
+	WIDTH: 66px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -301px; HEIGHT: 36px
+}
+.btn_jj02 {
+	WIDTH: 66px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) -71px -301px; HEIGHT: 36px
+}
+.btn_xz01 {
+	WIDTH: 54px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -340px; HEIGHT: 28px
+}
+.btn_xz02 {
+	WIDTH: 53px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) -53px -340px; HEIGHT: 28px
+}
+.btn_xz03 {
+	WIDTH: 53px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) -105px -340px; HEIGHT: 28px
+}
+.btn_xz04 {
+	WIDTH: 53px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) -158px -340px; HEIGHT: 28px
+}
+.btn_wygh {
+	WIDTH: 86px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -370px; HEIGHT: 22px
+}
+.btn_sx01 {
+	WIDTH: 86px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -398px; HEIGHT: 22px
+}
+.btn_sx02 {
+	WIDTH: 86px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -422px; HEIGHT: 22px
+}
+.btn_sx03 {
+	WIDTH: 86px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -445px; HEIGHT: 22px
+}
+.btn_sx04 {
+	WIDTH: 86px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -467px; HEIGHT: 22px
+}
+.btn_sx05 {
+	WIDTH: 86px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -489px; HEIGHT: 22px
+}
+.btn_down {
+	WIDTH: 152px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -514px; HEIGHT: 38px
+}
+.btn_gg01 {
+	TEXT-ALIGN: center; LINE-HEIGHT: 28px; WIDTH: 80px; DISPLAY: block; BACKGROUND: url(../images/gg_btn.jpg) left -555px; HEIGHT: 24px; COLOR: #fff; FONT-SIZE: 14px
+}
+.btn_gg01 A {
+	COLOR: #fff; TEXT-DECORATION: none
+}
+.btn_gg01 A:hover {
+	TEXT-DECORATION: none
+}
+.zhuce_btn {
+	BACKGROUND-COLOR: #f5f5f5; PADDING-LEFT: 500px
+}

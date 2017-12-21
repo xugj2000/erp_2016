@@ -1,0 +1,242 @@
+删除视图
+
+declare mycur cursor local for select [name] from dbo.sysobjects where xtype='V'  --声明游标
+declare @name varchar(100) 
+  
+OPEN mycur    --打开游标
+  
+FETCH NEXT from mycur into @name
+  
+WHILE @@FETCH_STATUS = 0  
+  
+BEGIN 
+exec('drop VIEW ' + @name) 
+FETCH NEXT from mycur into @name   --逐条读取
+END 
+  
+CLOSE mycur   --关闭游标
+
+删除存储过程：
+
+declare mycur cursor local for select [name] from dbo.sysobjects where xtype='P'
+declare @name varchar(100) 
+  
+OPEN mycur 
+  
+FETCH NEXT from mycur into @name
+  
+WHILE @@FETCH_STATUS = 0  
+  
+BEGIN 
+exec('drop PROCEDURE ' + @name) 
+FETCH NEXT from mycur into @name
+END 
+  
+CLOSE mycur 
+
+
+--/第1步**********删除所有表的外键约束*************************/
+
+ 
+
+DECLARE c1 cursor for
+
+select 'alter table ['+ object_name(parent_obj) + '] drop constraint ['+name+']; '
+
+from sysobjects
+
+where xtype = 'F'
+
+open c1
+
+declare @c1 varchar(8000)
+
+fetch next from c1 into @c1
+
+while(@@fetch_status=0)
+
+begin
+
+exec(@c1)
+
+fetch next from c1 into @c1
+
+end
+
+close c1
+
+deallocate c1
+
+ 
+
+--/第2步**********删除所有表*************************/
+
+
+declare @sql varchar(8000)
+
+while (select count(*) from sysobjects where type='U')>0
+
+begin
+
+SELECT @sql='drop table ' + name
+
+FROM sysobjects
+
+WHERE (type = 'U')
+
+ORDER BY 'drop table ' + name
+
+exec(@sql) 
+
+end
+
+
+--!!!!!!!!!!!!!!!!!!!!!  
+
+--!!!!!!!!
+
+慎用
+
+!!!!!!!!! 
+
+--!!!!!!!!!!!!!!!!!!!!!  
+
+--
+
+删除
+
+sql server
+
+中所有的表视图存储过程函数
+
+ 
+
+  
+
+--
+
+删除存储过程
+
+  
+
+DECLARE @STRING VARCHAR(8000)  
+
+WHILE EXISTS(SELECT NAME FROM SYSOBJECTS WHERE TYPE='P' AND STATUS>=0) 
+
+BEGIN  
+
+SELECT 
+
+@STRING='DROP 
+
+PROCEDURE 
+
+'+NAME 
+
+FROM 
+
+SYSOBJECTS 
+
+WHERE 
+
+TYPE 
+
+= 
+
+'P' 
+
+AND 
+
+STATUS>=0  
+
+--SELECT @STRING 
+
+EXEC(@STRING) 
+
+END 
+
+ 
+
+GO 
+
+  
+
+--
+
+删除默认值或
+
+ 
+
+DEFAULT 
+
+约束
+
+ 
+
+DECLARE @STRING VARCHAR(8000)  
+
+WHILE EXISTS(SELECT NAME FROM SYSOBJECTS WHERE XTYPE='D') 
+
+BEGIN  
+
+SELECT @STRING='ALTER TABLE '+B.NAME+' DROP CONSTRAINT '+A.NAME 
+
+FROM (SELECT PARENT_OBJ,NAME FROM SYSOBJECTS WHERE XTYPE='D') A,  
+
+(SELECT ID,NAME FROM SYSOBJECTS WHERE OBJECTPROPERTY(ID, N'ISUSERTABLE') = 1) B 
+
+WHERE A.PARENT_OBJ=B.ID 
+
+EXEC(@STRING) 
+
+END 
+
+ 
+
+GO 
+
+  
+
+--
+
+删除
+
+UNIQUE 
+
+约束
+
+  
+
+DECLARE @STRING VARCHAR(8000)  
+
+WHILE EXISTS(SELECT NAME FROM SYSOBJECTS WHERE XTYPE='UQ') 
+
+BEGIN  
+
+SELECT @STRING='ALTER TABLE '+B.NAME+' DROP CONSTRAINT '+A.NAME 
+
+FROM (SELECT PARENT_OBJ,NAME FROM SYSOBJECTS WHERE XTYPE='UQ') A,  
+
+(SELECT ID,NAME FROM SYSOBJECTS WHERE OBJECTPROPERTY(ID, N'ISUSERTABLE') = 1) B 
+
+WHERE A.PARENT_OBJ=B.ID 
+
+EXEC(@STRING) 
+
+END 
+
+ 
+
+GO 
+
+  
+
+--
+
+删除
+
+FOREIGN KEY 
+
+约束
+
+  

@@ -1,0 +1,33 @@
+
+		#keyword{
+			display:inline;
+			width:180px;
+		}
+		ul{
+			margin-left:0px;
+			margin-top:0px;
+			border:1px solid #000;
+			list-style:none;
+			width:180px;
+			padding:0px;
+			background-color:#FFFFFF
+		}
+		.select{
+			background:#36C;
+			color:#FFF;
+			}
+		.select span{
+			color:#FFF;
+		}
+		li{
+			line-height:16px;
+			font-size:12px;
+			padding:2px;
+			text-align:left
+		}
+		span{
+			float:right;
+			font-size:12px;
+			color:#008000;
+			margin-top:-3px;
+		}

@@ -1,0 +1,1794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="StockSynToVPN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="products" type="tns:ArrayOfProduct" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProduct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Product">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StockType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StyleId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProductNumber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="WarehouseID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="StockSynToVPNResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="MySoapHeader" type="tns:MySoapHeader" />
+      <s:complexType name="MySoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hash" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:long" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="BalanceMoneySynToVPN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="supplierID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="zonger" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BalanceMoneySynToVPNResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="orderCancelInWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="WhoDo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BigType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="orderCancelInWebResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getNoLocalCancelOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderStr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CancelIdStr" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BigType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNoLocalCancelOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getNoLocalCancelOrderResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrderPrintInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BigType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderSn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LiuShuiHao" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliverTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliverOpMan" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliverMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliverReplay" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendOrderPrintInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ChangeStock">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="WareHouseId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StyleId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Num" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderSn" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OpType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeStockResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SendUserMoneyChange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MoneyAmount" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendUserMoneyChangeResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConfirmRukuInWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LiuShuiHao" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmRukuInWebResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConfirmChukuInWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LiuShuiHao" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmChukuInWebResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SendBeLocalFalg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Dotable" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ActiveId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendBeLocalFalgResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConfirmSecKill">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmSecKillResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getWarehousingPrintInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LiuShuiHao" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrintDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getWarehousingPrintInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getStockActionFromStorage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="StyleId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="EffectNum" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="DoType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="DingDan" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStockActionFromStorageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getUserMoneyAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="MoneyAmount" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="DingDan" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserMoneyActionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getSupplierPayFromStorage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PayMoney" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForWhy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LiuShuihao" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSupplierPayFromStorageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getSupplierTransactionFromStorage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupplierId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransactionType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransactionMoney" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="TransactionTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="RelatedSn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSupplierTransactionFromStorageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateSafetyWarehouseGoodsNumLocal">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateSafetyWarehouseGoodsNumLocalResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDirectOrderPost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="shopxpacid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderSn" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="deliverTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDirectOrderPostResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDirectOrderPostInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderSn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpressNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpressCompany" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExpressTel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDirectOrderPostInfoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDirectStockChange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="supplierid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="productid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="styleid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isincome" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="num" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="remark" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDirectStockChangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getDirectStockChangeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSelfPrintOk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strOrderSn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeliverOpMan" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OpTyle" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSelfPrintOkResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLocalIp">
+        <s:complexType />
+      </s:element>
+      <s:element name="getLocalIpResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="StockSynToVPNSoapIn">
+    <wsdl:part name="parameters" element="tns:StockSynToVPN" />
+  </wsdl:message>
+  <wsdl:message name="StockSynToVPNSoapOut">
+    <wsdl:part name="parameters" element="tns:StockSynToVPNResponse" />
+  </wsdl:message>
+  <wsdl:message name="StockSynToVPNMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="BalanceMoneySynToVPNSoapIn">
+    <wsdl:part name="parameters" element="tns:BalanceMoneySynToVPN" />
+  </wsdl:message>
+  <wsdl:message name="BalanceMoneySynToVPNSoapOut">
+    <wsdl:part name="parameters" element="tns:BalanceMoneySynToVPNResponse" />
+  </wsdl:message>
+  <wsdl:message name="BalanceMoneySynToVPNMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="orderCancelInWebSoapIn">
+    <wsdl:part name="parameters" element="tns:orderCancelInWeb" />
+  </wsdl:message>
+  <wsdl:message name="orderCancelInWebSoapOut">
+    <wsdl:part name="parameters" element="tns:orderCancelInWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="orderCancelInWebMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getNoLocalCancelOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:getNoLocalCancelOrder" />
+  </wsdl:message>
+  <wsdl:message name="getNoLocalCancelOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:getNoLocalCancelOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNoLocalCancelOrderMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendOrderPrintInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SendOrderPrintInfo" />
+  </wsdl:message>
+  <wsdl:message name="SendOrderPrintInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SendOrderPrintInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendOrderPrintInfoMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ChangeStockSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeStock" />
+  </wsdl:message>
+  <wsdl:message name="ChangeStockSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeStockResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeStockMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendUserMoneyChangeSoapIn">
+    <wsdl:part name="parameters" element="tns:SendUserMoneyChange" />
+  </wsdl:message>
+  <wsdl:message name="SendUserMoneyChangeSoapOut">
+    <wsdl:part name="parameters" element="tns:SendUserMoneyChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendUserMoneyChangeMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRukuInWebSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmRukuInWeb" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRukuInWebSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmRukuInWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRukuInWebMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmChukuInWebSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmChukuInWeb" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmChukuInWebSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmChukuInWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmChukuInWebMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="SendBeLocalFalgSoapIn">
+    <wsdl:part name="parameters" element="tns:SendBeLocalFalg" />
+  </wsdl:message>
+  <wsdl:message name="SendBeLocalFalgSoapOut">
+    <wsdl:part name="parameters" element="tns:SendBeLocalFalgResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendBeLocalFalgMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmSecKillSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmSecKill" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmSecKillSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmSecKillResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmSecKillMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getWarehousingPrintInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getWarehousingPrintInfo" />
+  </wsdl:message>
+  <wsdl:message name="getWarehousingPrintInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getWarehousingPrintInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getWarehousingPrintInfoMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getStockActionFromStorageSoapIn">
+    <wsdl:part name="parameters" element="tns:getStockActionFromStorage" />
+  </wsdl:message>
+  <wsdl:message name="getStockActionFromStorageSoapOut">
+    <wsdl:part name="parameters" element="tns:getStockActionFromStorageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStockActionFromStorageMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getUserMoneyActionSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserMoneyAction" />
+  </wsdl:message>
+  <wsdl:message name="getUserMoneyActionSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserMoneyActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserMoneyActionMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierPayFromStorageSoapIn">
+    <wsdl:part name="parameters" element="tns:getSupplierPayFromStorage" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierPayFromStorageSoapOut">
+    <wsdl:part name="parameters" element="tns:getSupplierPayFromStorageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierPayFromStorageMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierTransactionFromStorageSoapIn">
+    <wsdl:part name="parameters" element="tns:getSupplierTransactionFromStorage" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierTransactionFromStorageSoapOut">
+    <wsdl:part name="parameters" element="tns:getSupplierTransactionFromStorageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierTransactionFromStorageMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="updateSafetyWarehouseGoodsNumLocalSoapIn">
+    <wsdl:part name="parameters" element="tns:updateSafetyWarehouseGoodsNumLocal" />
+  </wsdl:message>
+  <wsdl:message name="updateSafetyWarehouseGoodsNumLocalSoapOut">
+    <wsdl:part name="parameters" element="tns:updateSafetyWarehouseGoodsNumLocalResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateSafetyWarehouseGoodsNumLocalMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostSoapIn">
+    <wsdl:part name="parameters" element="tns:getDirectOrderPost" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostSoapOut">
+    <wsdl:part name="parameters" element="tns:getDirectOrderPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDirectOrderPostInfo" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDirectOrderPostInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostInfoMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getDirectStockChangeSoapIn">
+    <wsdl:part name="parameters" element="tns:getDirectStockChange" />
+  </wsdl:message>
+  <wsdl:message name="getDirectStockChangeSoapOut">
+    <wsdl:part name="parameters" element="tns:getDirectStockChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDirectStockChangeMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getSelfPrintOkSoapIn">
+    <wsdl:part name="parameters" element="tns:getSelfPrintOk" />
+  </wsdl:message>
+  <wsdl:message name="getSelfPrintOkSoapOut">
+    <wsdl:part name="parameters" element="tns:getSelfPrintOkResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSelfPrintOkMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getLocalIpSoapIn">
+    <wsdl:part name="parameters" element="tns:getLocalIp" />
+  </wsdl:message>
+  <wsdl:message name="getLocalIpSoapOut">
+    <wsdl:part name="parameters" element="tns:getLocalIpResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLocalIpMySoapHeader">
+    <wsdl:part name="MySoapHeader" element="tns:MySoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="BalanceMoneySynToVPNHttpGetIn">
+    <wsdl:part name="supplierID" type="s:string" />
+    <wsdl:part name="zonger" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BalanceMoneySynToVPNHttpGetOut" />
+  <wsdl:message name="orderCancelInWebHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="WhoDo" type="s:string" />
+    <wsdl:part name="BigType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="orderCancelInWebHttpGetOut" />
+  <wsdl:message name="getNoLocalCancelOrderHttpGetIn">
+    <wsdl:part name="OrderStr" type="s:string" />
+    <wsdl:part name="CancelIdStr" type="s:string" />
+    <wsdl:part name="BigType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getNoLocalCancelOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="SendOrderPrintInfoHttpGetIn">
+    <wsdl:part name="BigType" type="s:string" />
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+    <wsdl:part name="DeliverTime" type="s:string" />
+    <wsdl:part name="DeliverOpMan" type="s:string" />
+    <wsdl:part name="DeliverMessage" type="s:string" />
+    <wsdl:part name="DeliverReplay" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendOrderPrintInfoHttpGetOut" />
+  <wsdl:message name="ChangeStockHttpGetIn">
+    <wsdl:part name="WareHouseId" type="s:string" />
+    <wsdl:part name="StyleId" type="s:string" />
+    <wsdl:part name="Num" type="s:string" />
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="OpType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangeStockHttpGetOut" />
+  <wsdl:message name="SendUserMoneyChangeHttpGetIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="MoneyAmount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendUserMoneyChangeHttpGetOut" />
+  <wsdl:message name="ConfirmRukuInWebHttpGetIn">
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRukuInWebHttpGetOut" />
+  <wsdl:message name="ConfirmChukuInWebHttpGetIn">
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmChukuInWebHttpGetOut" />
+  <wsdl:message name="SendBeLocalFalgHttpGetIn">
+    <wsdl:part name="Dotable" type="s:string" />
+    <wsdl:part name="IdName" type="s:string" />
+    <wsdl:part name="ActiveId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendBeLocalFalgHttpGetOut" />
+  <wsdl:message name="ConfirmSecKillHttpGetIn">
+    <wsdl:part name="OrderId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmSecKillHttpGetOut" />
+  <wsdl:message name="getWarehousingPrintInfoHttpGetIn">
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+    <wsdl:part name="PrintDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getWarehousingPrintInfoHttpGetOut" />
+  <wsdl:message name="getStockActionFromStorageHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="StyleId" type="s:string" />
+    <wsdl:part name="EffectNum" type="s:string" />
+    <wsdl:part name="DoType" type="s:string" />
+    <wsdl:part name="DingDan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStockActionFromStorageHttpGetOut" />
+  <wsdl:message name="getUserMoneyActionHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="MoneyAmount" type="s:string" />
+    <wsdl:part name="DingDan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserMoneyActionHttpGetOut" />
+  <wsdl:message name="getSupplierPayFromStorageHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="SupplierId" type="s:string" />
+    <wsdl:part name="PayMoney" type="s:string" />
+    <wsdl:part name="PayType" type="s:string" />
+    <wsdl:part name="ForWhy" type="s:string" />
+    <wsdl:part name="LiuShuihao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierPayFromStorageHttpGetOut" />
+  <wsdl:message name="getSupplierTransactionFromStorageHttpGetIn">
+    <wsdl:part name="SupplierType" type="s:string" />
+    <wsdl:part name="SupplierId" type="s:string" />
+    <wsdl:part name="TransactionType" type="s:string" />
+    <wsdl:part name="TransactionMoney" type="s:string" />
+    <wsdl:part name="TransactionTime" type="s:string" />
+    <wsdl:part name="RelatedSn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierTransactionFromStorageHttpGetOut" />
+  <wsdl:message name="updateSafetyWarehouseGoodsNumLocalHttpGetIn" />
+  <wsdl:message name="updateSafetyWarehouseGoodsNumLocalHttpGetOut" />
+  <wsdl:message name="getDirectOrderPostHttpGetIn">
+    <wsdl:part name="shopxpacid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="deliverTime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostHttpGetOut" />
+  <wsdl:message name="getDirectOrderPostInfoHttpGetIn">
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="ExpressNo" type="s:string" />
+    <wsdl:part name="ExpressCompany" type="s:string" />
+    <wsdl:part name="ExpressTel" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostInfoHttpGetOut" />
+  <wsdl:message name="getDirectStockChangeHttpGetIn">
+    <wsdl:part name="supplierid" type="s:string" />
+    <wsdl:part name="productid" type="s:string" />
+    <wsdl:part name="styleid" type="s:string" />
+    <wsdl:part name="isincome" type="s:string" />
+    <wsdl:part name="num" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getDirectStockChangeHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="getSelfPrintOkHttpGetIn">
+    <wsdl:part name="strOrderSn" type="s:string" />
+    <wsdl:part name="DeliverOpMan" type="s:string" />
+    <wsdl:part name="OpTyle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSelfPrintOkHttpGetOut" />
+  <wsdl:message name="getLocalIpHttpGetIn" />
+  <wsdl:message name="getLocalIpHttpGetOut" />
+  <wsdl:message name="BalanceMoneySynToVPNHttpPostIn">
+    <wsdl:part name="supplierID" type="s:string" />
+    <wsdl:part name="zonger" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BalanceMoneySynToVPNHttpPostOut" />
+  <wsdl:message name="orderCancelInWebHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="WhoDo" type="s:string" />
+    <wsdl:part name="BigType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="orderCancelInWebHttpPostOut" />
+  <wsdl:message name="getNoLocalCancelOrderHttpPostIn">
+    <wsdl:part name="OrderStr" type="s:string" />
+    <wsdl:part name="CancelIdStr" type="s:string" />
+    <wsdl:part name="BigType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getNoLocalCancelOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="SendOrderPrintInfoHttpPostIn">
+    <wsdl:part name="BigType" type="s:string" />
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+    <wsdl:part name="DeliverTime" type="s:string" />
+    <wsdl:part name="DeliverOpMan" type="s:string" />
+    <wsdl:part name="DeliverMessage" type="s:string" />
+    <wsdl:part name="DeliverReplay" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendOrderPrintInfoHttpPostOut" />
+  <wsdl:message name="ChangeStockHttpPostIn">
+    <wsdl:part name="WareHouseId" type="s:string" />
+    <wsdl:part name="StyleId" type="s:string" />
+    <wsdl:part name="Num" type="s:string" />
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="OpType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ChangeStockHttpPostOut" />
+  <wsdl:message name="SendUserMoneyChangeHttpPostIn">
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="MoneyAmount" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendUserMoneyChangeHttpPostOut" />
+  <wsdl:message name="ConfirmRukuInWebHttpPostIn">
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmRukuInWebHttpPostOut" />
+  <wsdl:message name="ConfirmChukuInWebHttpPostIn">
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmChukuInWebHttpPostOut" />
+  <wsdl:message name="SendBeLocalFalgHttpPostIn">
+    <wsdl:part name="Dotable" type="s:string" />
+    <wsdl:part name="IdName" type="s:string" />
+    <wsdl:part name="ActiveId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SendBeLocalFalgHttpPostOut" />
+  <wsdl:message name="ConfirmSecKillHttpPostIn">
+    <wsdl:part name="OrderId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmSecKillHttpPostOut" />
+  <wsdl:message name="getWarehousingPrintInfoHttpPostIn">
+    <wsdl:part name="LiuShuiHao" type="s:string" />
+    <wsdl:part name="PrintDate" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getWarehousingPrintInfoHttpPostOut" />
+  <wsdl:message name="getStockActionFromStorageHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="StyleId" type="s:string" />
+    <wsdl:part name="EffectNum" type="s:string" />
+    <wsdl:part name="DoType" type="s:string" />
+    <wsdl:part name="DingDan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getStockActionFromStorageHttpPostOut" />
+  <wsdl:message name="getUserMoneyActionHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="UserId" type="s:string" />
+    <wsdl:part name="MoneyAmount" type="s:string" />
+    <wsdl:part name="DingDan" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserMoneyActionHttpPostOut" />
+  <wsdl:message name="getSupplierPayFromStorageHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="SupplierId" type="s:string" />
+    <wsdl:part name="PayMoney" type="s:string" />
+    <wsdl:part name="PayType" type="s:string" />
+    <wsdl:part name="ForWhy" type="s:string" />
+    <wsdl:part name="LiuShuihao" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierPayFromStorageHttpPostOut" />
+  <wsdl:message name="getSupplierTransactionFromStorageHttpPostIn">
+    <wsdl:part name="SupplierType" type="s:string" />
+    <wsdl:part name="SupplierId" type="s:string" />
+    <wsdl:part name="TransactionType" type="s:string" />
+    <wsdl:part name="TransactionMoney" type="s:string" />
+    <wsdl:part name="TransactionTime" type="s:string" />
+    <wsdl:part name="RelatedSn" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierTransactionFromStorageHttpPostOut" />
+  <wsdl:message name="updateSafetyWarehouseGoodsNumLocalHttpPostIn" />
+  <wsdl:message name="updateSafetyWarehouseGoodsNumLocalHttpPostOut" />
+  <wsdl:message name="getDirectOrderPostHttpPostIn">
+    <wsdl:part name="shopxpacid" type="s:string" />
+    <wsdl:part name="userid" type="s:string" />
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="deliverTime" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostHttpPostOut" />
+  <wsdl:message name="getDirectOrderPostInfoHttpPostIn">
+    <wsdl:part name="OrderSn" type="s:string" />
+    <wsdl:part name="ExpressNo" type="s:string" />
+    <wsdl:part name="ExpressCompany" type="s:string" />
+    <wsdl:part name="ExpressTel" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getDirectOrderPostInfoHttpPostOut" />
+  <wsdl:message name="getDirectStockChangeHttpPostIn">
+    <wsdl:part name="supplierid" type="s:string" />
+    <wsdl:part name="productid" type="s:string" />
+    <wsdl:part name="styleid" type="s:string" />
+    <wsdl:part name="isincome" type="s:string" />
+    <wsdl:part name="num" type="s:string" />
+    <wsdl:part name="remark" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getDirectStockChangeHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="getSelfPrintOkHttpPostIn">
+    <wsdl:part name="strOrderSn" type="s:string" />
+    <wsdl:part name="DeliverOpMan" type="s:string" />
+    <wsdl:part name="OpTyle" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSelfPrintOkHttpPostOut" />
+  <wsdl:message name="getLocalIpHttpPostIn" />
+  <wsdl:message name="getLocalIpHttpPostOut" />
+  <wsdl:portType name="LocalToWebsiteSoap">
+    <wsdl:operation name="StockSynToVPN">
+      <wsdl:input message="tns:StockSynToVPNSoapIn" />
+      <wsdl:output message="tns:StockSynToVPNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BalanceMoneySynToVPN">
+      <wsdl:input message="tns:BalanceMoneySynToVPNSoapIn" />
+      <wsdl:output message="tns:BalanceMoneySynToVPNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="orderCancelInWeb">
+      <wsdl:input message="tns:orderCancelInWebSoapIn" />
+      <wsdl:output message="tns:orderCancelInWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNoLocalCancelOrder">
+      <wsdl:input message="tns:getNoLocalCancelOrderSoapIn" />
+      <wsdl:output message="tns:getNoLocalCancelOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderPrintInfo">
+      <wsdl:input message="tns:SendOrderPrintInfoSoapIn" />
+      <wsdl:output message="tns:SendOrderPrintInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStock">
+      <wsdl:input message="tns:ChangeStockSoapIn" />
+      <wsdl:output message="tns:ChangeStockSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendUserMoneyChange">
+      <wsdl:input message="tns:SendUserMoneyChangeSoapIn" />
+      <wsdl:output message="tns:SendUserMoneyChangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRukuInWeb">
+      <wsdl:input message="tns:ConfirmRukuInWebSoapIn" />
+      <wsdl:output message="tns:ConfirmRukuInWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmChukuInWeb">
+      <wsdl:input message="tns:ConfirmChukuInWebSoapIn" />
+      <wsdl:output message="tns:ConfirmChukuInWebSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBeLocalFalg">
+      <wsdl:input message="tns:SendBeLocalFalgSoapIn" />
+      <wsdl:output message="tns:SendBeLocalFalgSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSecKill">
+      <wsdl:input message="tns:ConfirmSecKillSoapIn" />
+      <wsdl:output message="tns:ConfirmSecKillSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWarehousingPrintInfo">
+      <wsdl:input message="tns:getWarehousingPrintInfoSoapIn" />
+      <wsdl:output message="tns:getWarehousingPrintInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStockActionFromStorage">
+      <wsdl:input message="tns:getStockActionFromStorageSoapIn" />
+      <wsdl:output message="tns:getStockActionFromStorageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserMoneyAction">
+      <wsdl:input message="tns:getUserMoneyActionSoapIn" />
+      <wsdl:output message="tns:getUserMoneyActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierPayFromStorage">
+      <wsdl:input message="tns:getSupplierPayFromStorageSoapIn" />
+      <wsdl:output message="tns:getSupplierPayFromStorageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierTransactionFromStorage">
+      <wsdl:input message="tns:getSupplierTransactionFromStorageSoapIn" />
+      <wsdl:output message="tns:getSupplierTransactionFromStorageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSafetyWarehouseGoodsNumLocal">
+      <wsdl:input message="tns:updateSafetyWarehouseGoodsNumLocalSoapIn" />
+      <wsdl:output message="tns:updateSafetyWarehouseGoodsNumLocalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPost">
+      <wsdl:input message="tns:getDirectOrderPostSoapIn" />
+      <wsdl:output message="tns:getDirectOrderPostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPostInfo">
+      <wsdl:input message="tns:getDirectOrderPostInfoSoapIn" />
+      <wsdl:output message="tns:getDirectOrderPostInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectStockChange">
+      <wsdl:input message="tns:getDirectStockChangeSoapIn" />
+      <wsdl:output message="tns:getDirectStockChangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSelfPrintOk">
+      <wsdl:input message="tns:getSelfPrintOkSoapIn" />
+      <wsdl:output message="tns:getSelfPrintOkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLocalIp">
+      <wsdl:input message="tns:getLocalIpSoapIn" />
+      <wsdl:output message="tns:getLocalIpSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LocalToWebsiteHttpGet">
+    <wsdl:operation name="BalanceMoneySynToVPN">
+      <wsdl:input message="tns:BalanceMoneySynToVPNHttpGetIn" />
+      <wsdl:output message="tns:BalanceMoneySynToVPNHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="orderCancelInWeb">
+      <wsdl:input message="tns:orderCancelInWebHttpGetIn" />
+      <wsdl:output message="tns:orderCancelInWebHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNoLocalCancelOrder">
+      <wsdl:input message="tns:getNoLocalCancelOrderHttpGetIn" />
+      <wsdl:output message="tns:getNoLocalCancelOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderPrintInfo">
+      <wsdl:input message="tns:SendOrderPrintInfoHttpGetIn" />
+      <wsdl:output message="tns:SendOrderPrintInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStock">
+      <wsdl:input message="tns:ChangeStockHttpGetIn" />
+      <wsdl:output message="tns:ChangeStockHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendUserMoneyChange">
+      <wsdl:input message="tns:SendUserMoneyChangeHttpGetIn" />
+      <wsdl:output message="tns:SendUserMoneyChangeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRukuInWeb">
+      <wsdl:input message="tns:ConfirmRukuInWebHttpGetIn" />
+      <wsdl:output message="tns:ConfirmRukuInWebHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmChukuInWeb">
+      <wsdl:input message="tns:ConfirmChukuInWebHttpGetIn" />
+      <wsdl:output message="tns:ConfirmChukuInWebHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBeLocalFalg">
+      <wsdl:input message="tns:SendBeLocalFalgHttpGetIn" />
+      <wsdl:output message="tns:SendBeLocalFalgHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSecKill">
+      <wsdl:input message="tns:ConfirmSecKillHttpGetIn" />
+      <wsdl:output message="tns:ConfirmSecKillHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWarehousingPrintInfo">
+      <wsdl:input message="tns:getWarehousingPrintInfoHttpGetIn" />
+      <wsdl:output message="tns:getWarehousingPrintInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStockActionFromStorage">
+      <wsdl:input message="tns:getStockActionFromStorageHttpGetIn" />
+      <wsdl:output message="tns:getStockActionFromStorageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserMoneyAction">
+      <wsdl:input message="tns:getUserMoneyActionHttpGetIn" />
+      <wsdl:output message="tns:getUserMoneyActionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierPayFromStorage">
+      <wsdl:input message="tns:getSupplierPayFromStorageHttpGetIn" />
+      <wsdl:output message="tns:getSupplierPayFromStorageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierTransactionFromStorage">
+      <wsdl:input message="tns:getSupplierTransactionFromStorageHttpGetIn" />
+      <wsdl:output message="tns:getSupplierTransactionFromStorageHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSafetyWarehouseGoodsNumLocal">
+      <wsdl:input message="tns:updateSafetyWarehouseGoodsNumLocalHttpGetIn" />
+      <wsdl:output message="tns:updateSafetyWarehouseGoodsNumLocalHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPost">
+      <wsdl:input message="tns:getDirectOrderPostHttpGetIn" />
+      <wsdl:output message="tns:getDirectOrderPostHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPostInfo">
+      <wsdl:input message="tns:getDirectOrderPostInfoHttpGetIn" />
+      <wsdl:output message="tns:getDirectOrderPostInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectStockChange">
+      <wsdl:input message="tns:getDirectStockChangeHttpGetIn" />
+      <wsdl:output message="tns:getDirectStockChangeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSelfPrintOk">
+      <wsdl:input message="tns:getSelfPrintOkHttpGetIn" />
+      <wsdl:output message="tns:getSelfPrintOkHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLocalIp">
+      <wsdl:input message="tns:getLocalIpHttpGetIn" />
+      <wsdl:output message="tns:getLocalIpHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LocalToWebsiteHttpPost">
+    <wsdl:operation name="BalanceMoneySynToVPN">
+      <wsdl:input message="tns:BalanceMoneySynToVPNHttpPostIn" />
+      <wsdl:output message="tns:BalanceMoneySynToVPNHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="orderCancelInWeb">
+      <wsdl:input message="tns:orderCancelInWebHttpPostIn" />
+      <wsdl:output message="tns:orderCancelInWebHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNoLocalCancelOrder">
+      <wsdl:input message="tns:getNoLocalCancelOrderHttpPostIn" />
+      <wsdl:output message="tns:getNoLocalCancelOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderPrintInfo">
+      <wsdl:input message="tns:SendOrderPrintInfoHttpPostIn" />
+      <wsdl:output message="tns:SendOrderPrintInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStock">
+      <wsdl:input message="tns:ChangeStockHttpPostIn" />
+      <wsdl:output message="tns:ChangeStockHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendUserMoneyChange">
+      <wsdl:input message="tns:SendUserMoneyChangeHttpPostIn" />
+      <wsdl:output message="tns:SendUserMoneyChangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRukuInWeb">
+      <wsdl:input message="tns:ConfirmRukuInWebHttpPostIn" />
+      <wsdl:output message="tns:ConfirmRukuInWebHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmChukuInWeb">
+      <wsdl:input message="tns:ConfirmChukuInWebHttpPostIn" />
+      <wsdl:output message="tns:ConfirmChukuInWebHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendBeLocalFalg">
+      <wsdl:input message="tns:SendBeLocalFalgHttpPostIn" />
+      <wsdl:output message="tns:SendBeLocalFalgHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSecKill">
+      <wsdl:input message="tns:ConfirmSecKillHttpPostIn" />
+      <wsdl:output message="tns:ConfirmSecKillHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWarehousingPrintInfo">
+      <wsdl:input message="tns:getWarehousingPrintInfoHttpPostIn" />
+      <wsdl:output message="tns:getWarehousingPrintInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStockActionFromStorage">
+      <wsdl:input message="tns:getStockActionFromStorageHttpPostIn" />
+      <wsdl:output message="tns:getStockActionFromStorageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserMoneyAction">
+      <wsdl:input message="tns:getUserMoneyActionHttpPostIn" />
+      <wsdl:output message="tns:getUserMoneyActionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierPayFromStorage">
+      <wsdl:input message="tns:getSupplierPayFromStorageHttpPostIn" />
+      <wsdl:output message="tns:getSupplierPayFromStorageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierTransactionFromStorage">
+      <wsdl:input message="tns:getSupplierTransactionFromStorageHttpPostIn" />
+      <wsdl:output message="tns:getSupplierTransactionFromStorageHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateSafetyWarehouseGoodsNumLocal">
+      <wsdl:input message="tns:updateSafetyWarehouseGoodsNumLocalHttpPostIn" />
+      <wsdl:output message="tns:updateSafetyWarehouseGoodsNumLocalHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPost">
+      <wsdl:input message="tns:getDirectOrderPostHttpPostIn" />
+      <wsdl:output message="tns:getDirectOrderPostHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPostInfo">
+      <wsdl:input message="tns:getDirectOrderPostInfoHttpPostIn" />
+      <wsdl:output message="tns:getDirectOrderPostInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectStockChange">
+      <wsdl:input message="tns:getDirectStockChangeHttpPostIn" />
+      <wsdl:output message="tns:getDirectStockChangeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSelfPrintOk">
+      <wsdl:input message="tns:getSelfPrintOkHttpPostIn" />
+      <wsdl:output message="tns:getSelfPrintOkHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLocalIp">
+      <wsdl:input message="tns:getLocalIpHttpPostIn" />
+      <wsdl:output message="tns:getLocalIpHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LocalToWebsiteSoap" type="tns:LocalToWebsiteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StockSynToVPN">
+      <soap:operation soapAction="http://tempuri.org/StockSynToVPN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:StockSynToVPNMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BalanceMoneySynToVPN">
+      <soap:operation soapAction="http://tempuri.org/BalanceMoneySynToVPN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:BalanceMoneySynToVPNMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderCancelInWeb">
+      <soap:operation soapAction="http://tempuri.org/orderCancelInWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:orderCancelInWebMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNoLocalCancelOrder">
+      <soap:operation soapAction="http://tempuri.org/getNoLocalCancelOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getNoLocalCancelOrderMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderPrintInfo">
+      <soap:operation soapAction="http://tempuri.org/SendOrderPrintInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendOrderPrintInfoMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStock">
+      <soap:operation soapAction="http://tempuri.org/ChangeStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ChangeStockMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendUserMoneyChange">
+      <soap:operation soapAction="http://tempuri.org/SendUserMoneyChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendUserMoneyChangeMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRukuInWeb">
+      <soap:operation soapAction="http://tempuri.org/ConfirmRukuInWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConfirmRukuInWebMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmChukuInWeb">
+      <soap:operation soapAction="http://tempuri.org/ConfirmChukuInWeb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConfirmChukuInWebMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBeLocalFalg">
+      <soap:operation soapAction="http://tempuri.org/SendBeLocalFalg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SendBeLocalFalgMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSecKill">
+      <soap:operation soapAction="http://tempuri.org/ConfirmSecKill" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ConfirmSecKillMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWarehousingPrintInfo">
+      <soap:operation soapAction="http://tempuri.org/getWarehousingPrintInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getWarehousingPrintInfoMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStockActionFromStorage">
+      <soap:operation soapAction="http://tempuri.org/getStockActionFromStorage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getStockActionFromStorageMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserMoneyAction">
+      <soap:operation soapAction="http://tempuri.org/getUserMoneyAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getUserMoneyActionMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierPayFromStorage">
+      <soap:operation soapAction="http://tempuri.org/getSupplierPayFromStorage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getSupplierPayFromStorageMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierTransactionFromStorage">
+      <soap:operation soapAction="http://tempuri.org/getSupplierTransactionFromStorage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getSupplierTransactionFromStorageMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSafetyWarehouseGoodsNumLocal">
+      <soap:operation soapAction="http://tempuri.org/updateSafetyWarehouseGoodsNumLocal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:updateSafetyWarehouseGoodsNumLocalMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPost">
+      <soap:operation soapAction="http://tempuri.org/getDirectOrderPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDirectOrderPostMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPostInfo">
+      <soap:operation soapAction="http://tempuri.org/getDirectOrderPostInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDirectOrderPostInfoMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirectStockChange">
+      <soap:operation soapAction="http://tempuri.org/getDirectStockChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDirectStockChangeMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelfPrintOk">
+      <soap:operation soapAction="http://tempuri.org/getSelfPrintOk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getSelfPrintOkMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocalIp">
+      <soap:operation soapAction="http://tempuri.org/getLocalIp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getLocalIpMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LocalToWebsiteSoap12" type="tns:LocalToWebsiteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StockSynToVPN">
+      <soap12:operation soapAction="http://tempuri.org/StockSynToVPN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:StockSynToVPNMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BalanceMoneySynToVPN">
+      <soap12:operation soapAction="http://tempuri.org/BalanceMoneySynToVPN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:BalanceMoneySynToVPNMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderCancelInWeb">
+      <soap12:operation soapAction="http://tempuri.org/orderCancelInWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:orderCancelInWebMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNoLocalCancelOrder">
+      <soap12:operation soapAction="http://tempuri.org/getNoLocalCancelOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getNoLocalCancelOrderMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderPrintInfo">
+      <soap12:operation soapAction="http://tempuri.org/SendOrderPrintInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendOrderPrintInfoMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStock">
+      <soap12:operation soapAction="http://tempuri.org/ChangeStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ChangeStockMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendUserMoneyChange">
+      <soap12:operation soapAction="http://tempuri.org/SendUserMoneyChange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendUserMoneyChangeMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRukuInWeb">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmRukuInWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConfirmRukuInWebMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmChukuInWeb">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmChukuInWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConfirmChukuInWebMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendBeLocalFalg">
+      <soap12:operation soapAction="http://tempuri.org/SendBeLocalFalg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SendBeLocalFalgMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSecKill">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmSecKill" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:ConfirmSecKillMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWarehousingPrintInfo">
+      <soap12:operation soapAction="http://tempuri.org/getWarehousingPrintInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getWarehousingPrintInfoMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStockActionFromStorage">
+      <soap12:operation soapAction="http://tempuri.org/getStockActionFromStorage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getStockActionFromStorageMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserMoneyAction">
+      <soap12:operation soapAction="http://tempuri.org/getUserMoneyAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getUserMoneyActionMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierPayFromStorage">
+      <soap12:operation soapAction="http://tempuri.org/getSupplierPayFromStorage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getSupplierPayFromStorageMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierTransactionFromStorage">
+      <soap12:operation soapAction="http://tempuri.org/getSupplierTransactionFromStorage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getSupplierTransactionFromStorageMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSafetyWarehouseGoodsNumLocal">
+      <soap12:operation soapAction="http://tempuri.org/updateSafetyWarehouseGoodsNumLocal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:updateSafetyWarehouseGoodsNumLocalMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPost">
+      <soap12:operation soapAction="http://tempuri.org/getDirectOrderPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDirectOrderPostMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPostInfo">
+      <soap12:operation soapAction="http://tempuri.org/getDirectOrderPostInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDirectOrderPostInfoMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDirectStockChange">
+      <soap12:operation soapAction="http://tempuri.org/getDirectStockChange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDirectStockChangeMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelfPrintOk">
+      <soap12:operation soapAction="http://tempuri.org/getSelfPrintOk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getSelfPrintOkMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLocalIp">
+      <soap12:operation soapAction="http://tempuri.org/getLocalIp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getLocalIpMySoapHeader" part="MySoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LocalToWebsiteHttpGet" type="tns:LocalToWebsiteHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="BalanceMoneySynToVPN">
+      <http:operation location="/BalanceMoneySynToVPN" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="orderCancelInWeb">
+      <http:operation location="/orderCancelInWeb" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getNoLocalCancelOrder">
+      <http:operation location="/getNoLocalCancelOrder" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderPrintInfo">
+      <http:operation location="/SendOrderPrintInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStock">
+      <http:operation location="/ChangeStock" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SendUserMoneyChange">
+      <http:operation location="/SendUserMoneyChange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRukuInWeb">
+      <http:operation location="/ConfirmRukuInWeb" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmChukuInWeb">
+      <http:operation location="/ConfirmChukuInWeb" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SendBeLocalFalg">
+      <http:operation location="/SendBeLocalFalg" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSecKill">
+      <http:operation location="/ConfirmSecKill" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getWarehousingPrintInfo">
+      <http:operation location="/getWarehousingPrintInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getStockActionFromStorage">
+      <http:operation location="/getStockActionFromStorage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getUserMoneyAction">
+      <http:operation location="/getUserMoneyAction" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierPayFromStorage">
+      <http:operation location="/getSupplierPayFromStorage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierTransactionFromStorage">
+      <http:operation location="/getSupplierTransactionFromStorage" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="updateSafetyWarehouseGoodsNumLocal">
+      <http:operation location="/updateSafetyWarehouseGoodsNumLocal" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPost">
+      <http:operation location="/getDirectOrderPost" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPostInfo">
+      <http:operation location="/getDirectOrderPostInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectStockChange">
+      <http:operation location="/getDirectStockChange" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelfPrintOk">
+      <http:operation location="/getSelfPrintOk" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getLocalIp">
+      <http:operation location="/getLocalIp" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LocalToWebsiteHttpPost" type="tns:LocalToWebsiteHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="BalanceMoneySynToVPN">
+      <http:operation location="/BalanceMoneySynToVPN" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="orderCancelInWeb">
+      <http:operation location="/orderCancelInWeb" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getNoLocalCancelOrder">
+      <http:operation location="/getNoLocalCancelOrder" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOrderPrintInfo">
+      <http:operation location="/SendOrderPrintInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeStock">
+      <http:operation location="/ChangeStock" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SendUserMoneyChange">
+      <http:operation location="/SendUserMoneyChange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmRukuInWeb">
+      <http:operation location="/ConfirmRukuInWeb" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmChukuInWeb">
+      <http:operation location="/ConfirmChukuInWeb" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="SendBeLocalFalg">
+      <http:operation location="/SendBeLocalFalg" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmSecKill">
+      <http:operation location="/ConfirmSecKill" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getWarehousingPrintInfo">
+      <http:operation location="/getWarehousingPrintInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getStockActionFromStorage">
+      <http:operation location="/getStockActionFromStorage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getUserMoneyAction">
+      <http:operation location="/getUserMoneyAction" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierPayFromStorage">
+      <http:operation location="/getSupplierPayFromStorage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierTransactionFromStorage">
+      <http:operation location="/getSupplierTransactionFromStorage" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="updateSafetyWarehouseGoodsNumLocal">
+      <http:operation location="/updateSafetyWarehouseGoodsNumLocal" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPost">
+      <http:operation location="/getDirectOrderPost" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectOrderPostInfo">
+      <http:operation location="/getDirectOrderPostInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getDirectStockChange">
+      <http:operation location="/getDirectStockChange" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSelfPrintOk">
+      <http:operation location="/getSelfPrintOk" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getLocalIp">
+      <http:operation location="/getLocalIp" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LocalToWebsite">
+    <wsdl:port name="LocalToWebsiteSoap" binding="tns:LocalToWebsiteSoap">
+      <soap:address location="http://service.maiduo.com/LocalToWebsite.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LocalToWebsiteSoap12" binding="tns:LocalToWebsiteSoap12">
+      <soap12:address location="http://service.maiduo.com/LocalToWebsite.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LocalToWebsiteHttpGet" binding="tns:LocalToWebsiteHttpGet">
+      <http:address location="http://service.maiduo.com/LocalToWebsite.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LocalToWebsiteHttpPost" binding="tns:LocalToWebsiteHttpPost">
+      <http:address location="http://service.maiduo.com/LocalToWebsite.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
