@@ -1,8 +1,8 @@
-ï»¿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProductReturn.aspx.cs" Inherits="Warehousing.Storage.ProductReturn" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProductReturn.aspx.cs" Inherits="Warehousing.Storage.ProductReturn" %>
 
 <html>
 <head>
-    <title>äº§å“å‡ºåº“</title>
+    <title>²úÆ·³ö¿â</title>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <link href="../css/global.css" rel="stylesheet" type="text/css" />
     <link href="../css/right.css" rel="stylesheet" type="text/css" />
@@ -68,22 +68,42 @@
                 var kw = $("#gettxm").val();
                 if (kw == "") return;
                 var txm = $("#mytable input[name='p_txm']");
+                var findflag = 0;
                 var txmcount = 0;
                 txm.each(function (index) {
                     if ($(this).val() == kw) {
                         quantityobj = $("#mytable input[name='p_quantity']").eq(index);
+                        <%if (return_id>0) {%>
                         init_quantity = parseFloat($("#mytable input[name='init_quantity']").eq(index).val());
                         if (init_quantity < (parseFloat(quantityobj.val()) + 1)) {
-                            alert("é€€è´§æ•°é‡è¶…å‡ºæœ¬å•æ¶‰åŠå•†å“æ•°é‡ï¼");
+                            alert("ÍË»õÊıÁ¿³¬³ö±¾µ¥Éæ¼°ÉÌÆ·ÊıÁ¿£¡");
                         }
                         else {
                             quantityobj.val(parseFloat(quantityobj.val()) + 1);
                         }
+                        <%}else{ %>
+                            quantityobj.val(parseFloat(quantityobj.val()) + 1);
+                        <%} %>
+                        findflag = 1;
                         $("#gettxm").val("");
                         $("#gettxm").focus();
                         return false
                     };
                 });
+                <%if (return_id==0) {%>
+                if (findflag == 0) {
+                    var onerow;
+                    var lastrow;
+                    if ($("#mytable input[name='p_txm']").eq(0).val() != "") {
+                        onerow = $("#oneline").html();
+                        //lastrow=$("#mytable").find('tr:last-child').html();
+                        $("#mytable").find('tr:last-child').after(onerow);
+                    }
+                    $("#mytable").find('tr:last-child').find("input[name='p_quantity']").val("1");
+                    $("#mytable").find('tr:last-child').find("input[name='p_txm']").val(kw);
+                    txmInputNew($("#mytable").find('tr:last-child').find("input[name='p_txm']"));
+                }
+                <%} %>
             });
 
 
@@ -113,14 +133,68 @@
                 },
                 messages: {
                     sm_date: {
-                        required: 'é€€è´§æ—¥æœŸä¸èƒ½ä¸ºç©º'
+                        required: 'ÍË»õÈÕÆÚ²»ÄÜÎª¿Õ'
                     },
                     sm_operator: {
-                        required: 'æ”¶è´§å‘˜ä¸èƒ½ä¸ºç©º'
+                        required: 'ÊÕ»õÔ±²»ÄÜÎª¿Õ'
                     }
                 }
             });
 
+        $("#TextLoginName").change(function () {
+            var usercode = $("#TextLoginName").val();
+            if (usercode == "") 
+            {
+            $("#user_info_area").html("");
+            return;
+            }
+            $.get("/Handler/getUserInfo.ashx?d=" + new Date().getTime(), { usercode: encodeURI(usercode) }, function (result) {
+                if (result == "0") {
+                   $("#user_info_area").html("µ±Ç°¿Í»§²»´æÔÚ£¬²»¿ÉÍË»õ£¡");
+                   alert("µ±Ç°¿Í»§²»´æÔÚ£¬²»¿ÉÍË»õ£¡");
+                }
+                else
+                {
+
+                 var ss = result.split("\t");
+                 $("#user_info_area").html("¿Í»§´æÔÚ£¬ĞÕÃû:"+ss[1]+"£¬ÊÖ»úºÅ"+ss[2]+"£¬µ±Ç°»ı·Ö£º"+ss[4]);
+                }
+            });
+        });
+
+            function txmInputNew(thisobj) {
+                var p_txm = $(thisobj).val();
+                if (p_txm == "") return;
+                var warehouse_id = form1.to_warehouse_id.value;
+                $.get("/Handler/getInfoByCode.ashx?d=" + new Date().getTime(), { q: p_txm, wid: warehouse_id }, function (result) {
+                    var obj = $(thisobj).parent().parent();
+                    //alert(result);
+                    if (result != "0") {
+                        var ss = result.split(",");
+                        obj.find("input[name='p_name']").val(ss[0]);
+                        obj.find("input[name='p_serial']").val(ss[1]);
+                        obj.find("input[name='p_spec']").val(ss[2]);
+                        obj.find("input[name='p_model']").val(ss[3]);
+                        obj.find("input[name='p_brand']").val(ss[4]);
+                        obj.find("input[name='p_unit']").val(ss[5]);
+                        obj.find("input[name='p_price']").val(ss[6]);
+                        //obj.find("input[name='p_baseprice']").val(ss[7]);
+                        obj.find("input[name='shelf_no']").val(ss[8]);
+                        var last = $("#mytable").find('tr:last-child');
+                        thisindex = $("#mytable").find('tr').index(obj);
+                        lastindex = $("#mytable").find('tr').index(last);
+                        $("#gettxm").val("");
+                        $("#gettxm").focus();
+                    }
+                    else {
+                        alert(p_txm + "´Ë²úÆ·Ôİ²»´æÔÚ¿âÖĞ£¡Çë¼ì²é~");
+                        $(thisobj).parent().parent().remove();
+                        $("#gettxm").val("");
+                        $("#gettxm").focus();
+                        // return;
+                    }
+                });
+            }
 
         });
 
@@ -128,11 +202,11 @@
             //alert("hi");
             var this_quantity = parseFloat($(thisobj).val());
             if (this_quantity < 0) {
-                alert("é€€è´§æ•°é‡ä¸èƒ½ä¸ºè´Ÿ");
+                alert("ÍË»õÊıÁ¿²»ÄÜÎª¸º");
                 return;
             }
             if (this_quantity > parseFloat(init_quantity)) {
-                alert("é€€è´§æ•°é‡è¶…å‡ºæœ¬å•æ¶‰åŠå•†å“æ•°é‡");
+                alert("ÍË»õÊıÁ¿³¬³ö±¾µ¥Éæ¼°ÉÌÆ·ÊıÁ¿");
                 return;
             }
         }
@@ -146,7 +220,7 @@
             class="tableBorder">
             <tr bgcolor="#FFFFFF">
                 <td align="center">
-                    <b><strong style="font-size: 18px;">å•†å“é€€è´§</strong></b>
+                    <b><strong style="font-size: 18px;">ÉÌÆ·ÍË»õ</strong></b>
                 </td>
             </tr>
             <tr bgcolor="#FFFFFF">
@@ -154,17 +228,17 @@
                     <table width="100%" cellpadding="4" class="style1">
                         <tr>
                             <td width="14%">
-                                å…¥åº“ç±»å‹ï¼š
+                                Èë¿âÀàĞÍ£º
                             </td>
                             <td width="86%">
                                 <asp:DropDownList ID="sm_type" runat="server" AutoPostBack="False">
                                 </asp:DropDownList>
-                               å…³è”å‡ºåº“å•:<label ID="relateActiveDiv" runat="server"></label>
+                               ¹ØÁª³ö¿âµ¥:<label ID="relateActiveDiv" runat="server"></label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                æ“ä½œä»“åº“ï¼š
+                                ²Ù×÷²Ö¿â£º
                             </td>
                             <td>
                                 <span>
@@ -175,21 +249,21 @@
                         </tr>
           <tr>
               <td width="14%">
-                  å®¢æˆ·æ ‡è¯†ï¼š</td>
+                  ¿Í»§±êÊ¶£º</td>
               <td width="86%">
                  <asp:TextBox ID="TextLoginName" runat="server" Width="238px"></asp:TextBox>
                </td>
           </tr>
           <tr>
               <td>
-                  ä¼šå‘˜ä¿¡æ¯ï¼š</td>
+                  »áÔ±ĞÅÏ¢£º</td>
               <td>
               <span id="user_info_area"></span>
               </td>
           </tr>
                         <tr>
                             <td>
-                                é€€è´§æ—¥æœŸï¼š
+                                ÍË»õÈÕÆÚ£º
                             </td>
                             <td>
                                 <asp:TextBox ID="sm_date" runat="server" Width="238px" ReadOnly onClick="return Calendar('sm_date','');"></asp:TextBox>
@@ -197,7 +271,7 @@
                         </tr>
                         <tr>
                             <td>
-                                æ”¶è´§äººå§“åï¼š
+                                ÊÕ»õÈËĞÕÃû£º
                             </td>
                             <td>
                                 <asp:TextBox ID="sm_operator" runat="server" Width="238px"></asp:TextBox>
@@ -205,7 +279,7 @@
                         </tr>
                         <tr>
                             <td>
-                                é€€è´§å¤‡æ³¨:ï¼š
+                                ÍË»õ±¸×¢:£º
                             </td>
                             <td>
                                 <asp:TextBox ID="sm_remark" runat="server" Width="238px"></asp:TextBox>
@@ -213,56 +287,53 @@
                         </tr>
                         <tr>
                             <td>
-                                æ‰«ç å½•å…¥:
+                                É¨ÂëÂ¼Èë:
                             </td>
                             <td>
                                 <input type="text" name="gettxm" id="gettxm" style="width: 238px; height: 30px; line-height: 30px"
                                     maxlength="20" />
-                                (<font color="red">è¯·åœ¨æ­¤è¾“å…¥æ¡ç </font>) 
+                                (<font color="red">ÇëÔÚ´ËÊäÈëÌõÂë</font>) 
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                å•†å“æ¸…å•
+                                ÉÌÆ·Çåµ¥
                                 <table width="100%" border="1" id="mytable" border="1">
                                     <tr>
                                         <td colspan="12">
-                                            å•†å“æ¸…å•
+                                            ÉÌÆ·Çåµ¥
                                         </td>
                                     </tr>
                                     <tr align="center">
                                         <td>
-                                            æ¡ç 
+                                            ÌõÂë
                                         </td>
                                         <td>
-                                            åç§°
+                                            Ãû³Æ
                                         </td>
                                         <td>
-                                            æ¬¾å·
+                                            ¿îºÅ
                                         </td>
                                         <td>
-                                            å“ç‰Œ
+                                            Æ·ÅÆ
                                         </td>
                                         <td>
-                                            å•ä½
+                                            µ¥Î»
                                         </td>
                                         <td>
-                                            è§„æ ¼
+                                            ¹æ¸ñ
                                         </td>
                                         <td>
-                                            å‹å·
+                                            ĞÍºÅ
                                         </td>
                                         <td>
-                                            æ•°é‡
+                                            ÊıÁ¿
                                         </td>
                                         <td>
-                                            ç®±å·
+                                            ²ÖÎ»
                                         </td>
                                         <td>
-                                            ä»“ä½
-                                        </td>
-                                        <td>
-                                            ä»·æ ¼
+                                            ¼Û¸ñ
                                         </td>
                                         <td>
                                         </td>
@@ -303,9 +374,6 @@
                                                         onblur="checkquantity(this,<%#Eval("p_quantity")%>);" style="border:1px solid red" /><input type="hidden" value="<%#Eval("p_quantity")%>" name="init_quantity" />
                                                 </td>
                                                 <td>
-                                                    <input name="p_box" type="text" class="text width4" value='<%#Eval("p_box")%>' />
-                                                </td>
-                                                <td>
                                                     <input name="shelf_no" type="text" class="text width4" value='<%#Eval("shelf_no")%>'
                                                         readonly />
                                                 </td>
@@ -330,7 +398,7 @@
                                     background: white; border: none" />
                             </td>
                             <td>
-                                <asp:Button ID="Button1" runat="server" Text=" æ äº¤ " OnClick="Button1_Click" />
+                                <asp:Button ID="Button1" runat="server" Text=" Ìá ½» " OnClick="Button1_Click" />
                             </td>
                         </tr>
                     </table>
@@ -344,7 +412,21 @@
         </table>
     </div>
     </form>
-    
-    </div>
+    <table style="display:none">
+<tbody id="oneline">
+  <tr align="center">
+    <td><input name="p_txm" type="text" data="" class="text width6" onchange="txmInput(this);" /></td>
+  	<td><input name="p_name" type="text" class="text width6" readonly/></td>
+    <td><input name="p_serial" type="text" class="text width3" readonly/></td>
+    <td><input name="p_brand" type="text" class="text width4" readonly/></td>
+    <td><input name="p_unit" type="text" class="text width4"  readonly/></td>
+    <td><input name="p_spec" type="text" class="text width2" readonly/></td>
+    <td><input name="p_model" type="text" class="text width2" readonly/></td>
+	<td><input name="p_quantity" type="text" class="text width4" value=0/></td>
+      <td><input name="shelf_no" type="text" class="text width4"/></td>
+	<td><input name="p_price" type="text" class="text width4"/></td>
+	<td><span class="delete_btn" onclick="$(this).parent().parent().remove();"></span></td>
+  </tr>
+</tbody></table>
 </body>
 </html>

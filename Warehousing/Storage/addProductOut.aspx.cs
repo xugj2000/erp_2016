@@ -34,19 +34,14 @@ namespace Warehousing.Storage
             id = Convert.ToInt32(Request["id"]);
             if (!Page.IsPostBack)
             {
-                if (Request.QueryString["outType"].IsNullOrEmpty() || !Request.QueryString["outType"].IsNumber())
+                if (id == 0)
                 {
-                    JSHelper.WriteScript("alert('请选择出库类型');history.back();");
-                    Response.End();
-                }
-                int_outType = Convert.ToInt32(Request.QueryString["outType"]);
-                if (int_outType == 12 || int_outType == 13)
-                {
-                    need_consumer = 1;
-                }
-                if (int_outType == (int)StorageType.退货返厂 || int_outType == (int)StorageType.维修返厂)
-                {
-                    need_supplier = 1;
+                    if (Request.QueryString["outType"].IsNullOrEmpty() || !Request.QueryString["outType"].IsNumber())
+                    {
+                        JSHelper.WriteScript("alert('请选择出库类型');history.back();");
+                        Response.End();
+                    }
+                    int_outType = Convert.ToInt32(Request.QueryString["outType"]);
                 }
                 Session["anti_refresh"] = "1";
                 int int_sm_type = 0;
@@ -61,6 +56,7 @@ namespace Warehousing.Storage
                     sm_operator.Text = dt.Rows[0]["sm_operator"].ToString();
                     sm_remark.Text = dt.Rows[0]["sm_remark"].ToString();
                     sm_type.Text = dt.Rows[0]["sm_type"].ToString();
+                    int_outType = Convert.ToInt32(dt.Rows[0]["sm_type"]);
                     TextLoginName.Text = dt.Rows[0]["consumer_name"].ToString();
                     TextLoginName2.Text = dt.Rows[0]["consumer_name"].ToString();
                     supplierid = Convert.ToInt32(dt.Rows[0]["sm_supplierid"]);
@@ -80,6 +76,16 @@ namespace Warehousing.Storage
                     
                 }
 
+
+                
+                if (int_outType == 12 || int_outType == 13)
+                {
+                    need_consumer = 1;
+                }
+                if (int_outType == (int)StorageType.退货返厂 || int_outType == (int)StorageType.维修返厂)
+                {
+                    need_supplier = 1;
+                }
                 if (need_supplier==1)
                 {
                     need_supplier = 1;
@@ -91,7 +97,7 @@ namespace Warehousing.Storage
 
                 sm_type.Items.Add(new ListItem(StorageHelper.getTypeText(int_outType), int_outType.ToString()));
 
-                if (my_warehouse_id!=0&&my_warehouse_id!=4)
+                if (my_warehouse_id!=0)
                 {
                     
                     Label_agent_info.Visible = true;
@@ -208,7 +214,7 @@ namespace Warehousing.Storage
                 }
                 if (Request["to_warehouse_id"].IsNullOrEmpty() || !Request["to_warehouse_id"].IsNumber())
                 {
-                    JSHelper.WriteScript("alert('调货目录仓有误');history.back();");
+                    JSHelper.WriteScript("alert('调货目标仓有误');history.back();");
                     Response.End();
                 }
                 int_to_warehouse_id = Convert.ToInt32(Request["to_warehouse_id"]);
@@ -221,9 +227,9 @@ namespace Warehousing.Storage
             Session["anti_refresh"] = "0";
 
             helper.Params.Clear();
-            helper.Params.Add("sm_supplierid", Request["sm_supplierid"]);
+            helper.Params.Add("sm_supplierid", Request["sm_supplierid"].IsNumber()?Request["sm_supplierid"]:"0");
             helper.Params.Add("sm_type", Request["sm_type"]);
-            helper.Params.Add("warehouse_id", Request["from_warehouse_id"]);
+            helper.Params.Add("warehouse_id", Request["from_warehouse_id"].IsNumber() ? Request["from_warehouse_id"] : "0");
             helper.Params.Add("warehouse_id_to", int_to_warehouse_id);
             helper.Params.Add("sm_date", Request["sm_date"]);
             helper.Params.Add("relate_sn", Request["relateActive"]);
@@ -255,7 +261,7 @@ namespace Warehousing.Storage
                     {
                         if (arr_p_txm[i].IsNotNullAndEmpty() && arr_p_name[i].IsNotNullAndEmpty() &&arr_p_quantity[i].IsNotNullAndEmpty()&& arr_p_quantity[i].IsNumber())
                         {
-                            bool isEnough = StorageHelper.checkOneStockIsEnough(arr_p_txm[i], Convert.ToInt32(Request["from_warehouse_id"]), Convert.ToInt32(arr_p_quantity[i]));
+                            bool isEnough = StorageHelper.checkOneStockIsEnough(arr_p_txm[i], Convert.ToInt32(Request["from_warehouse_id"]), Convert.ToDouble(arr_p_quantity[i]));
                             //Response.Write(arr_p_quantity[i]);
                             if (!isEnough)
                             {
@@ -269,9 +275,10 @@ namespace Warehousing.Storage
                 helper.Params.Add("sm_sn", StorageHelper.getNewChurukuHao("CK"));
                 helper.Params.Add("sm_adminid", HttpContext.Current.Session["ManageUserId"].ToString());
                 try
-                {
+                {  
                     string UserName = TextLoginName.Text;
                     int userid = 0;
+
                     if (UserName.IsNotNullAndEmpty())
                     {
                         userid = UserHelper.getUserId(UserName);
@@ -302,20 +309,27 @@ namespace Warehousing.Storage
                             {
                                 newUser.User_Mobile = UserName;
                             }
+                            else
+                            {
+                                newUser.User_Mobile = "";
+                            }
                             newUser.User_level = 2;//一级批发商
                             newUser.is_hide = 0;
                             newUser.User_Pwd = "666666";
                             newUser.True_name = "";
+                            
                             newUser.cashier_id_from = my_admin_id;
                             newUser.store_id_from = my_warehouse_id;
+                            Response.Write(newUser.User_Pwd);
                             userid = UserHelper.addUser(newUser);
                         }
                         helper.Params.Add("consumer_id", userid);
                         helper.Params.Add("consumer_name", UserName);
                     }
-
+                   // Response.Write(userid);
+                    //Response.End();
                     helper.Insert("Tb_storage_main");
-
+                    
                 }
                 catch
                 {

@@ -49,6 +49,15 @@ namespace Warehousing.Storage {
         protected global::System.Web.UI.WebControls.TextBox p_txm;
         
         /// <summary>
+        /// consumer_name 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox consumer_name;
+        
+        /// <summary>
         /// sm_type 控件。
         /// </summary>
         /// <remarks>

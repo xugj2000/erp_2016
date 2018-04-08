@@ -166,6 +166,7 @@
     <Content Include="Storage\inc\function.asp" />
     <Content Include="Storage\Orderlist.asp" />
     <Content Include="Storage\ProductActive.aspx" />
+    <Content Include="Storage\ProductDoing.aspx" />
     <Content Include="Storage\ProductEdit.aspx" />
     <Content Include="Storage\ProductFinance.aspx" />
     <Content Include="Storage\ProductIn.aspx" />
@@ -748,6 +749,13 @@
     </Compile>
     <Compile Include="Storage\ProductActive.aspx.designer.cs">
       <DependentUpon>ProductActive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\ProductDoing.aspx.cs">
+      <DependentUpon>ProductDoing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Storage\ProductDoing.aspx.designer.cs">
+      <DependentUpon>ProductDoing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Storage\ProductEdit.aspx.cs">
       <DependentUpon>ProductEdit.aspx</DependentUpon>

@@ -23,10 +23,14 @@ namespace Warehousing.Storage
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            SiteHelper.GetPageUrlpower("Storage/ProductIn.aspx");
+            if (Session["PowerRead"].ToString() != "1")
+            {
+                SiteHelper.NOPowerMessage();
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            SiteHelper.CheckLogin();
            // my_warehouse_id = Convert.ToInt32(Request.Cookies["userInfo"]["warehouse_id"]);
             if (!Page.IsPostBack)
             {
@@ -81,8 +85,9 @@ namespace Warehousing.Storage
             string EndDate = Request["endDate"];
             string int_sm_status = Request["sm_status"];
             string int_sm_type = Request["sm_type"];
+            string str_consumer_name = Request["consumer_name"];
 
-            queryStr = "sm_sn=" + str_sm_sn + "&p_serial=" + str_p_serial + "&p_txm=" + str_p_txm + "&sm_supplierid=" + int_sm_supplierid + "&startDate=" + StartDate + "&endDate=" + EndDate + "&sm_status=" + int_sm_status+ "&sm_type=" + int_sm_type +"&warehouse_id="+int_warehouse_id;
+            queryStr = "sm_sn=" + str_sm_sn + "&p_serial=" + str_p_serial + "&p_txm=" + str_p_txm + "&sm_supplierid=" + int_sm_supplierid + "&startDate=" + StartDate + "&endDate=" + EndDate + "&sm_status=" + int_sm_status + "&sm_type=" + int_sm_type + "&warehouse_id=" + int_warehouse_id + "&consumer_name=" + str_consumer_name;
             StringBuilder where = new StringBuilder("sm_direction='入库'");
 
             if (my_warehouse_id > 0)
@@ -143,6 +148,12 @@ namespace Warehousing.Storage
             {
                 sm_type.Text = int_sm_type;
                 where.AppendFormat(" and sm_type={0}", int_sm_type);
+            }
+            if (str_consumer_name.IsNotNullAndEmpty())
+            {
+                consumer_name.Text = str_consumer_name;
+                Button4.Visible = true;
+                where.AppendFormat(" and consumer_name='{0}'", str_consumer_name);
             }
             return where.ToString();
         }

@@ -196,7 +196,7 @@ namespace Warehousing.Business
         /// <param name="warehouse_id"></param>
         /// <param name="p_quantity"></param>
         /// <returns></returns>
-        public static bool checkOneStockIsEnough(int pro_id, int warehouse_id, int p_quantity)
+        public static bool checkOneStockIsEnough(int pro_id, int warehouse_id, double p_quantity)
         {
             bool IsEnough = true;
             SqlHelper conn = LocalSqlHelper.WH;
@@ -219,7 +219,7 @@ namespace Warehousing.Business
             return IsEnough;
         }
 
-        public static bool checkOneStockIsEnough(string p_txm, int warehouse_id, int p_quantity)
+        public static bool checkOneStockIsEnough(string p_txm, int warehouse_id, double p_quantity)
         {
             bool IsEnough = true;
             int pro_id = getIdByTxm(p_txm);
@@ -417,7 +417,7 @@ namespace Warehousing.Business
         {
             SqlHelper conn = LocalSqlHelper.WH;
             string WarehouseName=Convert.ToString(conn.ExecScalar("select warehouse_name from WareHouse_List with(nolock) where warehouse_id=" + WarehouseId.ToString()));
-            WarehouseName = WarehouseName.IsNullOrEmpty() ? "全仓" : WarehouseName;
+            WarehouseName = WarehouseName.IsNullOrEmpty() ? "-" : WarehouseName;
             return WarehouseName;
         }
 

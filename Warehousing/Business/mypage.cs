@@ -36,7 +36,7 @@ namespace Warehousing
                     print_page_width = 50;
                     break;
             }
-            print_page_width = 100;
+            print_page_width = 20;
             if (myStorageInfo.agent_id==0)
             {
                // print_page_width = 150;

@@ -9,20 +9,20 @@
 <script language="javascript" type="text/javascript" src="../js/tjsetday.js"></script>
 <script>
     $(function () {
-        $("#pro_supplierid_span").css("display", "<%=pro_supplierid_span_css%>");
+        //$("#pro_supplierid_span").css("display", "<%=pro_supplierid_span_css%>");
         $("#to_warehouse_id_span").css("display", "<%=to_warehouse_id_span_css%>");
         $("#direction").change(function () {
             $value = $(this).val();
             if ($value == "入库") {
-                $("#pro_supplierid_span").css("display", "inline");
+               // $("#pro_supplierid_span").css("display", "inline");
                 $("#to_warehouse_id_span").css("display", "none");
             }
             if ($value == "出库") {
-                $("#pro_supplierid_span").css("display", "none");
+               // $("#pro_supplierid_span").css("display", "none");
                 $("#to_warehouse_id_span").css("display", "inline");
             }
             if ($value == "") {
-                $("#pro_supplierid_span").css("display", "none");
+               // $("#pro_supplierid_span").css("display", "none");
                 $("#to_warehouse_id_span").css("display", "none");
             }
         });
@@ -65,7 +65,7 @@
            <asp:ListItem Value="">当前仓</asp:ListItem>
          </asp:DropDownList>
          <span style="display:inline;" id="pro_supplierid_span">
-        <asp:DropDownList ID="pro_supplierid" runat="server" style="width:60px;">
+        <asp:DropDownList ID="pro_supplierid" runat="server" style="width:80px;">
           <asp:ListItem Value="">供应商</asp:ListItem>
         </asp:DropDownList>   
         </span>
@@ -74,6 +74,7 @@
             <asp:ListItem Value="">目标仓</asp:ListItem>
            </asp:DropDownList>
         </span>
+        客户<asp:TextBox ID="consumer_name" runat="server" Width="60px"></asp:TextBox>
             <asp:DropDownList ID="sm_status" runat="server">
            <asp:ListItem Value="1">已审</asp:ListItem>
            <asp:ListItem Value="0">未审</asp:ListItem>

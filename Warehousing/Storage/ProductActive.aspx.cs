@@ -113,7 +113,7 @@ namespace Warehousing.Storage
             SqlHelper helper = LocalSqlHelper.WH;
             AspNetPager1.PageSize = 20;
             string table = "(select a.p_txm as txm,sum(a.p_quantity) as pcount,pro_name='',pro_code='',pro_spec='',pro_model='',supplierName='',shortSupplierName='',pro_outprice=0.00,pro_inprice=0.00 from Tb_storage_product a left join Tb_storage_main b on a.sm_id=b.sm_id where " + where + " group by a.p_txm) as sales";
-           // Response.Write(table);
+            //Response.Write(table);
             DataTable dt = conn.TablesPageNew(table, "*", "txm asc,pcount desc", true, AspNetPager1.PageSize, index, "", out count);
 
             // DataTable dt = PublicHelper.TablesPage(conn, table, "*", "pcount desc", AspNetPager1.PageSize, index, "", "txm", out count);
@@ -163,8 +163,9 @@ namespace Warehousing.Storage
             string int_sm_status = Request["sm_status"];
             string StartDate = Request["txtStartDate"];
             string EndDate = Request["txtEndDate"];
+            string str_consumer_name = Request["consumer_name"];
              sm_direction = Request["direction"];
-             queryStr = "pro_txm=" + str_pro_txm + "&pro_code=" + str_pro_code + "&direction=" + sm_direction + "&pro_supplierid=" + int_pro_supplierid + "&warehouse_id=" + int_warehouse_id + "&to_warehouse_id=" + int_to_warehouse_id + "&txtStartDate=" + StartDate + "&txtEndDate=" + EndDate + "&sm_status=" + int_sm_status;
+             queryStr = "pro_txm=" + str_pro_txm + "&pro_code=" + str_pro_code + "&direction=" + sm_direction + "&pro_supplierid=" + int_pro_supplierid + "&warehouse_id=" + int_warehouse_id + "&to_warehouse_id=" + int_to_warehouse_id + "&txtStartDate=" + StartDate + "&txtEndDate=" + EndDate + "&sm_status=" + int_sm_status + "&consumer_name=" + str_consumer_name;
             StringBuilder where = new StringBuilder("1=1");
             if (my_warehouse_id > 0)
             {
@@ -218,7 +219,13 @@ namespace Warehousing.Storage
 
             sm_status.Text = int_sm_status;
             where.AppendFormat(" and b.sm_status={0}", int_sm_status);
-            
+
+            if (str_consumer_name.IsNotNullAndEmpty())
+            {
+                consumer_name.Text = str_consumer_name;
+                where.AppendFormat(" and b.consumer_name like '{0}'", str_consumer_name);
+            }
+
             if (int_pro_supplierid.IsNumber())
             {
                 pro_supplierid.Text = int_pro_supplierid;
@@ -238,6 +245,7 @@ namespace Warehousing.Storage
             where.AppendFormat(" and b.sm_date>'{0}'", StartDate);
             txtEndDate.Text = EndDate;
             where.AppendFormat(" and b.sm_date<DateAdd(d,1,'{0}')", EndDate);
+            //Response.Write(where);
             return where.ToString();
         }
 

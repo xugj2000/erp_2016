@@ -85,6 +85,9 @@
         <%if (Warehousing.Business.PublicHelper.getReadRightByText("销售统计")==1){%>
         <li><a href="Storage/ProductSales.aspx"  target="right">销售统计</a></li>
           <%} %>
+        <%if (Warehousing.Business.PublicHelper.getReadRightByText("出入库综合")==1){%>
+        <li><a href="Storage/ProductDoing.aspx"  target="right">出入库综合</a></li>
+          <%} %>
         <%if (Warehousing.Business.PublicHelper.getReadRightByText("出入库统计")==1){%>
         <li><a href="Storage/ProductActive.aspx"  target="right">出入库统计</a></li>
           <%} %>

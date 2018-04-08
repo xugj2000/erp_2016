@@ -58,17 +58,21 @@ font-size:14px;height:14px;line-height:14px;
 	<div id="view" style="width:800px;margin:0 auto;text-align:center">	
       <table width="100%" cellpadding="4" class="style1">
        <tr>
-    <td colspan="2" style="font-size:20px;text-align:center;font-weight:bold;height:40px;">入库清单
+    <td colspan="2" style="font-size:20px;text-align:center;font-weight:bold;height:40px;">肯定时装入库清单
     </td>
   </tr>
                     <tr>
               <td colspan=2>
 <table width="100%" bgcolor="#FFFFFF" id="mytable" border="1" align="center" cellpadding="5" cellspacing="0">
   <tr bgcolor="#FFFFFF" align="center">
-    <td colspan="11" style="text-align:left">
+    <td colspan="9" style="text-align:left">
     入库类型： <%=Warehousing.Business.StorageHelper.getTypeText(sm_type)%>
     <%if (sm_supplierid>0){ %> 供应商名称： <%=Warehousing.Business.StorageHelper.getSupplierName(sm_supplierid)%><%} %>
-     <%if (warehouse_id_from>0){ %>调货仓库：从<%=Warehousing.Business.StorageHelper.getWarehouseName(warehouse_id_from)%> 到 <%=Warehousing.Business.StorageHelper.getWarehouseName(warehouse_id)%><%} %>
+    <%if (!string.IsNullOrEmpty(consumer_name))
+       { %>
+    &nbsp; &nbsp;&nbsp;  客户：<%=consumer_name%>
+     <%} %>
+     <%if (warehouse_id_from>0){ %>&nbsp; &nbsp;&nbsp;调货仓库：从<%=Warehousing.Business.StorageHelper.getWarehouseName(warehouse_id_from)%> 到 <%=Warehousing.Business.StorageHelper.getWarehouseName(warehouse_id)%><%} %>
     入库单号：<%=sm_sn%>
     到货日期：<%=sm_date %>
 
@@ -76,7 +80,6 @@ font-size:14px;height:14px;line-height:14px;
   </tr>
   <tr>
      <td>&nbsp;</td>
-    <td>条码</td>
   	<td>名称</td>
     <td>款号</td>
     <td>单位</td>
@@ -85,14 +88,11 @@ font-size:14px;height:14px;line-height:14px;
     <td>数量</td>
 	<td>单价</td>
     <td>金额</td>
-    <td>仓位</td>
-    
   </tr>
 		<asp:Repeater ID="MemberList" runat="server">
                            <ItemTemplate>   
   <tr bgcolor="#FFFFFF" align="center">
-   <td style="height:20px;"><%# Container.ItemIndex + 1%> </td>
-    <td><input type=hidden name="p_id" value='<%#Eval("p_id")%>' /><%#Eval("p_txm")%></td>
+   <td style="height:20px;"><%# Container.ItemIndex + 1%> <input type=hidden name="p_id" value='<%#Eval("p_id")%>' /></td>
   	<td><%#Warehousing.Business.PublicHelper.subStr(Convert.ToString(Eval("p_name")),6)%></td>
     <td><%#Eval("p_serial")%></td>
     <td><%#Eval("p_unit")%></td>
@@ -101,19 +101,17 @@ font-size:14px;height:14px;line-height:14px;
 	<td><%#Convert.ToDouble(Eval("p_quantity"))%></td>
 	<td><%#Convert.ToDouble(Eval("p_price"))%></td>
     <td><%#Convert.ToDouble(Eval("p_price")) * Convert.ToDouble(Eval("p_quantity"))%></td>
-    <td><%#Eval("shelf_no")%>&nbsp;</td>
   </tr>
           </ItemTemplate>
           </asp:Repeater>
  <tr>
-  <td style="height:20px;text-align:right" colspan=7> 商品合计</td>
+  <td style="height:20px;text-align:right" colspan=6> 商品合计</td>
 	<td align=center><%=all_num%></td>
     <td align=center>&nbsp;</td>
     <td align=center><%=all_price%></td>
-    <td align=center>&nbsp;</td>
   </tr>
   <tr bgcolor="#FFFFFF" align="center">
-    <td colspan="11" style="text-align:left">
+    <td colspan="9" style="text-align:left">
     制表时间:<%=sm_time%> 
     审核人：<span style="display:inline-block;width:70px;">&nbsp;</span> 
     收货员：<span style="display:inline-block;width:70px;"><%=sm_operator %></span> 
@@ -160,14 +158,14 @@ font-size:14px;height:14px;line-height:14px;
 	    
 		var strFormHtml=strBodyStyle+"<body>"+document.getElementById("view").innerHTML+"</body>";	
 		//var iPageHigh=document.getElementById("view").scrollHeight;
-		var iPageHigh=200;
+		var iPageHigh=320;
 		//iPageHigh=iPageHigh+20*<%=MemberList.Items.Count%>;//加上公共信息
         iPageHigh=iPageHigh+30*<%=MemberList.Items.Count%>;//加上公共信息
 		iPageHighs=iPageHigh/96*254;//折算成毫米(单位0.1mm) (这里px是绝对值长度单位：96px/in)
 		LODOP.PRINT_INIT("出库单打印"); 
         LODOP.SET_PRINT_STYLE("PenStyle",0);//设置线条风格0--实线 1--破折线 2--点线 3--点划线 4--双点划线 缺省值是0。
         LODOP.SET_PRINT_STYLE("PenWidth",2);//单位是(打印)像素，缺省值是1，非实线的线条宽也是0
-		LODOP.SET_PRINT_PAGESIZE(1,2400,iPageHighs,""); 
+		LODOP.SET_PRINT_PAGESIZE(1,2200,iPageHighs,""); 
 		LODOP.ADD_PRINT_HTM(20,<%=print_page_width %>,800,iPageHigh,strFormHtml); //四个数值分别表示Top,Left,Width,Height
 		LODOP.SET_PRINT_STYLEA(1,"Horient",1);
 	};

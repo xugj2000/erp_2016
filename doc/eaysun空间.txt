@@ -28,20 +28,4 @@ exec sp_changeobjectowner 'a1222133024.Tb_FinancialFlow','dbo'
 
 
 
-qxu1539600036
-主机管理控制台地址：
 
-https://cp.aliyun.com 
-用户名：qxu1539600036
-044XHHPB 
-  
-FTP登录主机地址：
-qxu1539600036.my3w.com
-用户名：qxu1539600036
-sql:044XHHPB
-
-mysql数据库连接地址：
-qdm191435650.my3w.com
-用户名：qdm191435650
-数据库名：qdm191435650_db
-密码：044XHHPB

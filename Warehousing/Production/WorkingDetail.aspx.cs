@@ -54,7 +54,7 @@ namespace Warehousing.Production
                     Response.Write("数据传递有误");
                     Response.End();
                 }
-                ProductionHelper.BindFactoryList(factory_id, 0);
+                ProductionHelper.BindFactoryList(factory_id, int_factory_id);
                 StorageHelper.BindWarehouseList(from_warehouse_id, int_from_warehouse_id, my_warehouse_id.ToString(), "");
 
                 bindTemplatePro();
@@ -134,9 +134,10 @@ namespace Warehousing.Production
                 helper.Params.Add("sm_direction", "出库");
                 helper.Params.Add("sm_status", 1);
                 helper.Params.Add("sm_adminid", my_admin_id);
+                helper.Insert("Tb_storage_main");
                 try
                 {
-                    helper.Insert("Tb_storage_main");
+                   
                 }
                 catch
                 {

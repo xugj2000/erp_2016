@@ -97,80 +97,94 @@ namespace Warehousing.Storage
               //  Response.End();
             }
             Session["anti_refresh"] = "0";
-
-            helper.Params.Clear();
-            helper.Params.Add("sm_supplierid", Request["sm_supplierid"]);
-            helper.Params.Add("sm_type", Request["sm_type"]);
-            helper.Params.Add("warehouse_id",Request["warehouse_id"]);
-            helper.Params.Add("sm_date", Request["sm_date"]);
-            helper.Params.Add("relate_sn", Request["relateActive"]);
-            helper.Params.Add("sm_operator", sm_operator.Text);
-            helper.Params.Add("sm_remark", sm_remark.Text);
-            helper.Params.Add("sm_direction","入库");
-            if (id == 0)
+            helper.BeginTran();
+            try
             {
-                helper.Params.Add("sm_sn", StorageHelper.getNewChurukuHao("RK"));
-                helper.Params.Add("sm_adminid", HttpContext.Current.Session["ManageUserId"].ToString());
-                try
+                //helper.Params.Clear();
+                helper.Params.Add("sm_supplierid", Request["sm_supplierid"]);
+                helper.Params.Add("sm_type", Request["sm_type"]);
+                helper.Params.Add("warehouse_id", Request["warehouse_id"]);
+                helper.Params.Add("sm_date", Request["sm_date"]);
+                helper.Params.Add("relate_sn", Request["relateActive"]);
+                helper.Params.Add("sm_operator", sm_operator.Text);
+                helper.Params.Add("sm_remark", sm_remark.Text);
+                helper.Params.Add("sm_direction", "入库");
+                if (id == 0)
                 {
-                    helper.Insert("Tb_storage_main");
-                }
-                catch
-                {
-                    JSHelper.WriteScript("alert('入库单号已有记录，不能重复！');history.back();");
-                    Response.End();
-                }
-                int sm_id = Convert.ToInt32(helper.ExecScalar("select top 1 sm_id from Tb_storage_main order by sm_id desc"));
+                    helper.Params.Add("sm_sn", StorageHelper.getNewChurukuHao("RK"));
+                    helper.Params.Add("sm_adminid", HttpContext.Current.Session["ManageUserId"].ToString());
+                    //try{
+                    helper.InsertTrans("Tb_storage_main");
+                    //}
+                    // catch
+                    //{
+                    //   JSHelper.WriteScript("alert('入库单号已有记录，不能重复！');history.back();");
+                    //    Response.End();
+                    //}
+                    int sm_id = Convert.ToInt32(helper.ExecScalar("select top 1 sm_id from Tb_storage_main order by sm_id desc"));
 
-                string p_name = Request.Form["p_name"];
-                if (p_name.IsNotNullAndEmpty())
-                {
-                    string[] arr_p_name = Request.Form["p_name"].Split(',');
-                    string[] arr_p_serial = Request.Form["p_serial"].Split(',');
-                    string[] arr_p_txm = Request.Form["p_txm"].Split(',');
-                    string[] arr_p_brand = Request.Form["p_brand"].Split(',');
-                    string[] arr_p_unit = Request.Form["p_unit"].Split(',');
-                    string[] arr_p_spec = Request.Form["p_spec"].Split(',');
-                    string[] arr_p_model = Request.Form["p_model"].Split(',');
-                    string[] arr_p_quantity = Request.Form["p_quantity"].Split(',');
-                    string[] arr_p_price = Request.Form["p_price"].Split(',');
-                    for (int i = 0; i < arr_p_name.Length; i++)
+                    string p_name = Request.Form["p_name"];
+                    if (p_name.IsNotNullAndEmpty())
                     {
-                        if (arr_p_txm[i].IsNotNullAndEmpty()&&arr_p_name[i].IsNotNullAndEmpty())
+                        string[] arr_p_name = Request.Form["p_name"].Split(',');
+                        string[] arr_p_serial = Request.Form["p_serial"].Split(',');
+                        string[] arr_p_txm = Request.Form["p_txm"].Split(',');
+                        string[] arr_p_brand = Request.Form["p_brand"].Split(',');
+                        string[] arr_p_unit = Request.Form["p_unit"].Split(',');
+                        string[] arr_p_spec = Request.Form["p_spec"].Split(',');
+                        string[] arr_p_model = Request.Form["p_model"].Split(',');
+                        string[] arr_p_quantity = Request.Form["p_quantity"].Split(',');
+                        string[] arr_p_price = Request.Form["p_price"].Split(',');
+                        for (int i = 0; i < arr_p_name.Length; i++)
                         {
-                            helper.Params.Clear();
-                            string checksql="select top 1 1 from product where pro_txm like '"+arr_p_txm[i]+"'";
-                            DataTable checkdt = helper.ExecDataTable(checksql);
-                            if (checkdt.Rows.Count > 0)
+                            if (arr_p_txm[i].IsNotNullAndEmpty() && arr_p_name[i].IsNotNullAndEmpty())
                             {
                                 helper.Params.Clear();
-                                helper.Params.Add("sm_id", sm_id);
-                                helper.Params.Add("p_name", arr_p_name[i]);
-                                helper.Params.Add("p_serial", arr_p_serial[i]);
-                                helper.Params.Add("p_txm", arr_p_txm[i].Trim());
-                                helper.Params.Add("p_brand", arr_p_brand[i]);
-                                helper.Params.Add("p_unit", arr_p_unit[i]);
-                                helper.Params.Add("p_spec", arr_p_spec[i]);
-                                helper.Params.Add("p_model", arr_p_model[i]);
-                                helper.Params.Add("p_quantity", arr_p_quantity[i].IsNumber() ? arr_p_quantity[i] : "0");
-                                helper.Params.Add("p_price", arr_p_price[i].IsNumber() ? arr_p_price[i] : "0");
-                                helper.Insert("Tb_storage_product");
+                                string checksql = "select top 1 1 from product where pro_txm like '" + arr_p_txm[i] + "'";
+                                DataTable checkdt = helper.ExecDataTable(checksql);
+                                if (checkdt.Rows.Count > 0)
+                                {
+                                    helper.Params.Clear();
+                                    helper.Params.Add("sm_id", sm_id);
+                                    helper.Params.Add("p_name", arr_p_name[i]);
+                                    helper.Params.Add("p_serial", arr_p_serial[i]);
+                                    helper.Params.Add("p_txm", arr_p_txm[i].Trim());
+                                    helper.Params.Add("p_brand", arr_p_brand[i]);
+                                    helper.Params.Add("p_unit", arr_p_unit[i]);
+                                    helper.Params.Add("p_spec", arr_p_spec[i]);
+                                    helper.Params.Add("p_model", arr_p_model[i]);
+                                    helper.Params.Add("p_quantity", arr_p_quantity[i].IsNumber() ? arr_p_quantity[i] : "0");
+                                    helper.Params.Add("p_price", arr_p_price[i].IsNumber() ? arr_p_price[i] : "0");
+                                    helper.InsertTrans("Tb_storage_product");
+                                }
+                                else
+                                {
+                                    SiteHelper.writeLog("入库条码检查", arr_p_txm[i] + "不存在");
+                                }
                             }
-                            else
-                            {
-                                SiteHelper.writeLog("入库条码检查", arr_p_txm[i]+"不存在");
-                            }
-                        }
 
+                        }
+                    }
+                    else
+                    {
+                        helper.RollbackTran();
+                        JSHelper.WriteScript("alert('请添加商品！');");
+                        Response.End();
                     }
                 }
+                else
+                {
+                    helper.Params.Add("sm_id", id);
+                    helper.UpdateTrans("Tb_storage_main", "sm_id");
+                }
+                helper.CommitTran();
+                JSHelper.WriteScript("alert('编辑成功');location.href='ProductIn.aspx';");
             }
-            else
+            catch (Exception ex)
             {
-                helper.Params.Add("sm_id", id);
-                helper.Update("Tb_storage_main", "sm_id");
+                helper.RollbackTran();
+                JSHelper.WriteScript("alert('有异常:"+ex.Message+"');location.href='ProductIn.aspx';");
             }
-            JSHelper.WriteScript("alert('编辑成功');location.href='ProductIn.aspx';");
             //Response.Write(RoleList.Text);
             Response.End();
         }

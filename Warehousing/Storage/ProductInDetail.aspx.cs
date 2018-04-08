@@ -18,10 +18,10 @@ namespace Warehousing.Storage
     public partial class ProductInDetail : mypage
     {
         protected SqlHelper helper = LocalSqlHelper.WH;
-        protected int id = 0, all_num = 0;
-        protected double all_price = 0;
+        protected int id = 0;
+        protected double all_price = 0, all_num = 0;
         protected int current_sm_status = 0;
-        protected string sm_sn = string.Empty, sm_date = string.Empty, sm_operator = string.Empty, sm_time = string.Empty;
+        protected string sm_sn = string.Empty, sm_date = string.Empty, sm_operator = string.Empty, sm_time = string.Empty, consumer_name = string.Empty;
         protected string sm_remark = string.Empty;
         protected int sm_supplierid = 0;
         protected int sm_type = 0;
@@ -31,6 +31,11 @@ namespace Warehousing.Storage
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            SiteHelper.GetPageUrlpower("Storage/ProductIn.aspx");
+            if (Session["PowerRead"].ToString() != "1")
+            {
+                SiteHelper.NOPowerMessage();
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,6 +57,7 @@ namespace Warehousing.Storage
                     warehouse_id_from = Convert.ToInt32(dt.Rows[0]["warehouse_id_from"]);
                     sm_type = Convert.ToInt32(dt.Rows[0]["sm_type"].ToString());
                     current_sm_status = Convert.ToInt32(dt.Rows[0]["sm_status"].ToString());
+                    consumer_name = dt.Rows[0]["consumer_name"].ToString();
                     BindMemberList(1, "sm_id=" + id.ToString());
                 }
                 Session["anti_in_refresh"] = "1";
@@ -66,8 +72,8 @@ namespace Warehousing.Storage
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 dt.Rows[i]["shelf_no"] = StorageHelper.getShelfNo(Convert.ToInt32(dt.Rows[i]["pro_id"]), warehouse_id);
-                all_num += Convert.ToInt32(dt.Rows[i]["p_quantity"]);
-                all_price += Convert.ToDouble(dt.Rows[i]["p_price"])* Convert.ToInt32(dt.Rows[i]["p_quantity"]);
+                all_num += Convert.ToDouble(dt.Rows[i]["p_quantity"]);
+                all_price += Convert.ToDouble(dt.Rows[i]["p_price"]) * Convert.ToDouble(dt.Rows[i]["p_quantity"]);
             }
 
             MemberList.DataShow(dt);

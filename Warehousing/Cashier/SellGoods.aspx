@@ -43,7 +43,7 @@
             }
             else {
                 //更新失败
-                alert(result.msg);
+                alert("商品直营零售价未设置或数据传输有误");
                 $(input).val($(input).attr('changed'));
             }
         });

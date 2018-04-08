@@ -24,11 +24,13 @@
     		<tr align="center">
 			<td colspan="16" align="left" bgcolor="#FFFFFF">
             入库单号<asp:TextBox ID="sm_sn" runat="server" Width="80px"></asp:TextBox>
-            &nbsp;
+             
             货号<asp:TextBox ID="p_serial" runat="server" Width="70px"></asp:TextBox>
-            &nbsp;
+             
             条码<asp:TextBox ID="p_txm" runat="server" Width="80px"></asp:TextBox>
-            &nbsp;
+             
+            客户<asp:TextBox ID="consumer_name" runat="server" Width="70px"></asp:TextBox>
+             
          <asp:DropDownList ID="sm_type" runat="server">
         <asp:ListItem Text="入库类型" Value=""></asp:ListItem>
         <asp:ListItem Text="采购入库" Value="1"></asp:ListItem>
@@ -86,12 +88,13 @@
          <td><%#Eval("sm_id")%></td>
           <td align="center"><%#Eval("sm_sn")%></td>
            <td><%#Warehousing.Business.StorageHelper.getTypeText(Convert.ToInt32(Eval("sm_type")))%></td>
-           <td><%#Warehousing.Business.StorageHelper.getWarehouseName(Convert.ToInt32(Eval("warehouse_id")))%></td>
+           <td><%#Warehousing.Business.StorageHelper.getWarehouseName(Convert.ToInt32(Eval("warehouse_id")))%>
+           </td>
            <td align="center"><%#Eval("sku")%></td>
            <td align="center"><%#Convert.ToDouble(Eval("procount"))%></td>
            <td align="center"><%#Convert.ToDouble(Eval("pvolume"))%></td>
             <td align="center"><%# Convert.ToInt32(Eval("sm_type")) != (int)Warehousing.Business.StorageType.生产入库 && Convert.ToInt32(Eval("sm_type")) != (int)Warehousing.Business.StorageType.修补返库 ? Warehousing.Business.StorageHelper.getAlreadyPayMoney(Convert.ToInt32(Eval("sm_id"))).ToString() : "-"%></td>
-          <td align="left" style="width:80px;"><%#Warehousing.Business.PublicHelper.subStr(getFromInfo(Eval("sm_supplierid"), Eval("warehouse_id_from")),6)%></td>
+          <td align="left" style="width:80px;"><%#Warehousing.Business.PublicHelper.subStr(getFromInfo(Eval("sm_supplierid"), Eval("warehouse_id_from")),6)%> <%#string.IsNullOrEmpty(Eval("consumer_name").ToString()) ? "" : Eval("consumer_name")%></td>
 		  <td><%#Convert.ToDateTime(Eval("sm_date")).ToShortDateString()%></td>
 		  <td><%#Eval("add_time")%></td>
           <td><%#Eval("sm_operator")%></td>

@@ -28,6 +28,11 @@ namespace Warehousing.Storage
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            SiteHelper.GetPageUrlpower("Storage/ProductOut.aspx");
+            if (Session["PowerAdd"].ToString() != "1")
+            {
+                SiteHelper.NOPowerMessage();
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -41,7 +46,8 @@ namespace Warehousing.Storage
             {
                 Session["anti_refresh"] = "1";
                 int int_sm_type = 0;
-
+                int_inType = 8;
+                string where = "warehouse_id=" + int_from_warehouse_id;
                 if (dt.Rows.Count > 0)
                 {
                     liushuihao = dt.Rows[0]["sm_sn"].ToString();
@@ -54,22 +60,24 @@ namespace Warehousing.Storage
                     // getbox.Text = dt.Rows[0]["sm_box"].ToString();
                     int_from_warehouse_id = Convert.ToInt32(dt.Rows[0]["warehouse_id"]);
                     int_sm_type = Convert.ToInt32(dt.Rows[0]["sm_type"]);
-                    int_inType = 8;  //既有出库单以出库单出库类型为准
+                     //既有出库单以出库单出库类型为准
                     relateActiveDiv.InnerText = liushuihao;
+                    bindReturnPro(return_id);
+                    where = "warehouse_id=" + int_from_warehouse_id;
                 }
                 else
                 {
-
-                    Response.End();
+                    where = "1=1";
+                    //Response.End();
                 }
 
                 sm_type.Items.Add(new ListItem(StorageHelper.getTypeText(int_inType), int_inType.ToString()));
 
-                string where = "warehouse_id=" + int_from_warehouse_id;
+                
 
                 Warehousing.Business.StorageHelper.BindWarehouseList(to_warehouse_id, int_from_warehouse_id, where);
 
-                bindReturnPro(return_id);
+                
             }
         }
 
@@ -99,10 +107,8 @@ namespace Warehousing.Storage
 
             helper.Params.Clear();
             helper.Params.Add("sm_type", 8);
-            helper.Params.Add("warehouse_id", Convert.ToInt32(dt.Rows[0]["warehouse_id"]));
-            helper.Params.Add("warehouse_id_to", Convert.ToInt32(dt.Rows[0]["warehouse_id"]));
             helper.Params.Add("sm_date", Request["sm_date"]);
-            helper.Params.Add("relate_sn", dt.Rows[0]["sm_sn"].ToString());
+            
             helper.Params.Add("sm_remark", sm_remark.Text);
             //helper.Params.Add("sm_box", getbox.Text);
             helper.Params.Add("sm_direction", "入库");
@@ -121,8 +127,34 @@ namespace Warehousing.Storage
 
                 helper.Params.Add("sm_sn", StorageHelper.getNewChurukuHao("RT"));
                 helper.Params.Add("sm_adminid", HttpContext.Current.Session["ManageUserId"].ToString());
-                helper.Params.Add("consumer_id", Convert.ToInt32(dt.Rows[0]["consumer_id"]));
-                helper.Params.Add("consumer_name",dt.Rows[0]["consumer_name"]);
+
+                if (return_id > 0)
+                {
+                    helper.Params.Add("warehouse_id", Convert.ToInt32(dt.Rows[0]["warehouse_id"]));
+                    helper.Params.Add("warehouse_id_to", Convert.ToInt32(dt.Rows[0]["warehouse_id"]));
+                    helper.Params.Add("relate_sn", dt.Rows[0]["sm_sn"].ToString());
+                    helper.Params.Add("consumer_id", Convert.ToInt32(dt.Rows[0]["consumer_id"]));
+                    helper.Params.Add("consumer_name", dt.Rows[0]["consumer_name"]);
+                }
+                else
+                {
+                    helper.Params.Add("warehouse_id", Request.Form["to_warehouse_id"]);
+                    helper.Params.Add("warehouse_id_to", Request.Form["to_warehouse_id"]);
+                    string UserName = TextLoginName.Text;
+                    int userid = 0;
+                    if (UserName.IsNotNullAndEmpty())
+                    {
+                        userid = UserHelper.getUserId(UserName);
+
+                        if (userid == 0)
+                        {
+                            JSHelper.WriteScript("alert('用户名不存在，不可退货!');history.back();");
+                            return;
+                        }
+                        helper.Params.Add("consumer_id", userid);
+                        helper.Params.Add("consumer_name", UserName);
+                    }
+                }
 
                 helper.Insert("Tb_storage_main");
 

@@ -18,10 +18,10 @@ namespace Warehousing.Storage
     public partial class ProductOutDetail : mypage
     {
         protected SqlHelper helper = LocalSqlHelper.WH;
-        protected int id = 0,all_num=0;
-        protected double all_price = 0;
+        protected int id = 0;
+        protected double all_price = 0, all_num = 0;
         protected int current_sm_status = 0;
-        protected string sm_sn = string.Empty, sm_date = string.Empty, sm_operator = string.Empty,sm_time=string.Empty;
+        protected string sm_sn = string.Empty, sm_date = string.Empty, sm_operator = string.Empty, sm_time = string.Empty, consumer_name=string.Empty;
         protected string sm_remark = string.Empty;
         protected int warehouse_id_from = 0;
         protected int warehouse_id_to = 0;
@@ -30,6 +30,11 @@ namespace Warehousing.Storage
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            SiteHelper.GetPageUrlpower("Storage/ProductOut.aspx");
+            if (Session["PowerRead"].ToString() != "1")
+            {
+                SiteHelper.NOPowerMessage();
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -50,6 +55,8 @@ namespace Warehousing.Storage
                     sm_time = dt.Rows[0]["add_time"].ToString();
                     sm_operator = dt.Rows[0]["sm_operator"].ToString();
                     sm_remark = dt.Rows[0]["sm_remark"].ToString();
+                    sm_remark = dt.Rows[0]["sm_remark"].ToString();
+                    consumer_name = dt.Rows[0]["consumer_name"].ToString();
                     sm_type = Convert.ToInt32(dt.Rows[0]["sm_type"].ToString());
                     current_sm_status = Convert.ToInt32(dt.Rows[0]["sm_status"].ToString());
                     BindMemberList(1, "sm_id=" + id.ToString());
@@ -70,8 +77,8 @@ namespace Warehousing.Storage
             DataTable dt = conn.ExecDataTable("select * from Tb_storage_product with(nolock) where " + where + " order by p_name,p_spec");
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                all_num += Convert.ToInt32(dt.Rows[i]["p_quantity"]);
-                all_price += Convert.ToDouble(dt.Rows[i]["p_price"]) * Convert.ToInt32(dt.Rows[i]["p_quantity"]);
+                all_num += Convert.ToDouble(dt.Rows[i]["p_quantity"]);
+                all_price += Convert.ToDouble(dt.Rows[i]["p_price"]) * Convert.ToDouble(dt.Rows[i]["p_quantity"]);
             }
             MemberList.DataShow(dt);
         }

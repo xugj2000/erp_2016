@@ -22,6 +22,11 @@ namespace Warehousing.Storage
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            SiteHelper.GetPageUrlpower("Storage/ProductOut.aspx");
+            if (Session["PowerRead"].ToString() != "1")
+            {
+                SiteHelper.NOPowerMessage();
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {

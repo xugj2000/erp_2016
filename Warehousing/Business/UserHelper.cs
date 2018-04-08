@@ -49,7 +49,10 @@ namespace Warehousing.Business
         {
             SqlHelper helper = LocalSqlHelper.WH;
             helper.Params.Add("User_name", newUser.User_name);
-            helper.Params.Add("User_Mobile",newUser.User_Mobile);
+            if (newUser.User_Mobile != null)
+            {
+                helper.Params.Add("User_Mobile", newUser.User_Mobile);
+            }
             helper.Params.Add("True_name", newUser.True_name);
             helper.Params.Add("User_level", newUser.User_level);
             helper.Params.Add("is_hide", newUser.is_hide);

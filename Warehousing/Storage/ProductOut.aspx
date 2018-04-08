@@ -18,7 +18,7 @@
   <td  align="center" bgcolor="#FFFFFF">
 	<table width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#CCCCCC">
     		<tr align="center">
-			<td colspan="17" align="right" bgcolor="#FFFFFF"><a href="addProductOutType.aspx" style="color:red;font-size:16px;text-decoration:underline">新增商品出库</a>&nbsp;&nbsp;</td>
+			<td colspan="17" align="right" bgcolor="#FFFFFF"><a href="addProductOutType.aspx" style="color:red;font-size:16px;text-decoration:underline">新增商品出库</a>&nbsp;&nbsp;<a href="ProductReturn.aspx" style="color:red;font-size:16px;text-decoration:underline;">退货入库</a>&nbsp;&nbsp;</td>
 		</tr>
     		<tr align="center">
 			<td colspan="17" align="left" bgcolor="#FFFFFF" style="line-height:25px;">
